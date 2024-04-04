@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="register.component.scss">
+</head>
+<body style="background-image: url('assets/Chica_Chaqueta_Azul.jpeg'); background-size: cover; background-repeat: no-repeat;">
+    <div class="register">
+        <div class="card">
+            <form>
+                <h1>Register</h1>
+                <input
+                    type="text"
+                    [(ngModel)]="tipoDocumento"
+                    name="tipoDocumento"
+                    placeholder="Tipo de Documento"
+                    required="required"
+                />
+                <input
+                    type="text"
+                    [(ngModel)]="numeroDocumento"
+                    name="numeroDocumento"
+                    placeholder="Número de Documento"
+                    required="required"
+                />
+                <input
+                    type="text"
+                    [(ngModel)]="nombre"
+                    name="nombre"
+                    placeholder="Nombre"
+                    required="required"
+                />
+                <input
+                    type="text"
+                    [(ngModel)]="apellido"
+                    name="apellido"
+                    placeholder="Apellido"
+                    required="required"
+                />
+                <input
+                    type="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    placeholder="Correo Electrónico"
+                    required="required"
+                />
+                <input
+                    type="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    required="required"
+                />
+                <input
+                    type="password"
+                    [(ngModel)]="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Repetir Contraseña"
+                    required="required"
+                />
+                <button type="submit" (click)="register()">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
