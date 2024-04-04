@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { IndexComponent } from './index/index.component';
+import { NicolasRoutingModule } from './nicolas-routing.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    IndexComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NicolasRoutingModule
   ]
 })
 export class NicolasModule { }
