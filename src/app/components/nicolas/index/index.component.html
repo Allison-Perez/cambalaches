@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Aplicación</title>
+    <!-- Agrega aquí tus enlaces a los archivos CSS necesarios -->
+</head>
+<body>
+    <div id="root">
+        <header>
+            <section class="text-white body-font mt-20 relative" style="margin: 0;">
+                <div class="container-fluid px-0 position-relative" style="padding-left: 0;">
+                    <div class="card mb-3 text-bg-dark" style="display: block; transition: opacity 1s ease-in-out; opacity: 1;">
+                        <img src="path/to/heroImg.jpg" class="card-img-top" alt="imagen 1" style="width: 100%; height: 1000px; object-fit: cover; transition: opacity 0.5s ease-in-out;">
+                    </div>
+                    <div class="animated-text-container" style="text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -150%); z-index: 2; overflow: hidden;">
+                        <h1 class="animated-text" style="font-size: 4rem; font-weight: bold; white-space: nowrap; animation: moveLeft 10s linear infinite; display: block;">LO MAS NUEVO DE LA TEMPORADA</h1>
+                        <div style="text-align: center;">
+                            <h2 class="animated-text" style="font-size: 1.5rem; font-weight: bold; display: block;">La moda se transforma en expresión y la diversidad es la clave de tu armario.</h2>
+                            <p class="animated-text" style="font-size: 1rem; font-weight: bold; display: block;"><small class="text-body-secondary">CAMBALACHES</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mx-auto flex justify-center mt-10" style="margin-left: 0; transition: margin-left 0.5s ease;">
+                    <a href="/products" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                        Todos los productos
+                    </a>
+                    <a href="/more-info" class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+                        Más información
+                    </a>
+                    <div class="relative">
+                        <button class="search-toggle bg-gray-200 text-gray-900 rounded border-none focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500 py-2 px-4 ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 19l-6-6m0 0l-6 6m6-6l6-6" />
+                            </svg>
+                        </button>
+                        <input class="search-input absolute top-0 right-0 bg-gray-200 text-gray-900 rounded border-none focus:outline-none focus:bg-white focus:ring-2 focus:ring-indigo-500 py-2 px-4 mr-2" type="text" placeholder="Buscar producto..." value="" onChange="">
+                    </div>
+                </div>
+                <style>
+                    @keyframes moveLeft {
+                        0% {
+                            transform: translateX(100%);
+                        }
+                        98% {
+                            transform: translateX(-100%);
+                        }
+                        100% {
+                            transform: translateX(-100%);
+                        }
+                    }
+            
+                    /* Media query para pantallas pequeñas */
+                    @media screen and (max-width: 768px) {
+                        .animated-text-container {
+                            top: 30%; /* Ajusta la posición vertical */
+                            left: 50%; /* Centra horizontalmente */
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+            
+                    /* Animación para desplazar los botones hacia la izquierda */
+                    .move-left {
+                        transform: translateX(-200px); /* Cambia la posición horizontal */
+                        transition: transform 0.5s ease; /* Agrega una transición suave */
+                    }
+                </style>
+            </section>
+            <div>
+                <h2>Categorías</h2>
+                <ul>
+                    <!-- Aquí puedes iterar sobre las categorías y mostrarlas como elementos de lista -->
+                    <!-- Por ejemplo, si categorías es un array de strings, podrías hacer algo como esto: -->
+                    <!-- {categorias.map((categoria, index) => (
+                        <li key={index}>{categoria}</li>
+                    ))} -->
+                    <!-- Pero debes asegurarte de ajustar esta parte según la estructura de datos que recibas -->
+                    <!-- Recuerda, este es solo un ejemplo básico -->
+                    <li>Categoría 1</li>
+                    <li>Categoría 2</li>
+                    <li>Categoría 3</li>
+                </ul>
+            </div>            
+        </header>
+        <nav>
+            <!-- Aquí puedes agregar el código para el componente Categories -->
+        </nav>
+        <div class="flex flex-col text-center w-full mt-20">
+            <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Productos</h2>
+            <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">LOS MAS DESTACADOS DE LA TEMPORADA</h1>
+        </div>
+                <!-- Espacio para el componente ProductCard -->
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-24 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+                            <!-- Aquí puedes iterar sobre los productos y mostrarlos como tarjetas -->
+                            <!-- Por ejemplo, si productos es un array de objetos, podrías hacer algo como esto: -->
+                            <!-- {productos.map((producto, index) => (
+                                <div key={index} class="lg:w-[23%] md:w-1/2 p-4 w-full mb-4 cursor-pointer rounded-lg shadow ml-4">
+                                    <a class="block relative h-48 rounded overflow-hidden">
+                                        <img alt={producto.title} class="object-contain object-center w-full h-full block" src={producto.image} />
+                                    </a>
+                                    <div class="mt-4">
+                                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">{producto.categorias}</h3>
+                                        <h2 class="text-gray-900 title-font text-lg font-medium">{producto.title}</h2>
+                                        <p class="mt-1 text-md font-semibold">${producto.price}</p>
+                                    </div>
+                                </div>
+                            ))} -->
+                            <!-- Pero debes asegurarte de ajustar esta parte según la estructura de datos que recibas -->
+                            <!-- Recuerda, este es solo un ejemplo básico -->
+                        </div>
+                    </div>
+                </section>
+        
+        <div>Loading.....</div>
+        <!-- Aquí puedes agregar el código para el componente FeatureCard, si hay un producto seleccionado -->
+        <!-- Y también para el componente Stats -->
+    </div>
