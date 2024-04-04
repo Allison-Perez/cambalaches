@@ -1,0 +1,121 @@
+/* Header styles */
+header {
+    background-color: rgb(235, 227, 227);
+    box-shadow: 0 2px 4px rgba(6, 3, 219, 0.1);
+    padding: 10px;
+}
+
+header a {
+    color: #000000;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+header a:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #f44336;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+header a:hover:after {
+    opacity: 1;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+/* Button styles */
+.btn {
+    border: 1px solid #ffffff; /* Añade borde a los botones */
+    border-radius: 4px; /* Agrega bordes redondeados */
+}
+
+//////////////HERO//////////////
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    98% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .animated-text-container {
+        top: 30%; /* Ajusta la posición vertical */
+        left: 50%; /* Centra horizontalmente */
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Animación para desplazar los botones hacia la izquierda */
+.move-left {
+    transform: translateX(-200px); /* Cambia la posición horizontal */
+    transition: transform 0.5s ease; /* Agrega una transición suave */
+}
+
+/* Estilos para el botón de búsqueda */
+.search-toggle {
+    background-color: #000000;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-toggle:hover {
+    background-color: #ffffff;
+}
+
+.search-input {
+    background-color: #b17b7b;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.search-input:focus {
+    background-color: #ddd;
+}
