@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class IndexComponent {
   // Define la ruta de la imagen
-  imagePath: string = 'assets/images/logo512.jpg';
+  imagePath: string = 'src\assets\Chica_Chaqueta_Azul.jpeg';
 }

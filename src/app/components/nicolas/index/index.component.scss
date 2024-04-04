@@ -64,6 +64,20 @@ header a:hover:after {
 
 //////////////HERO//////////////
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 142vh;
+    background-image: url('/cambalaches/src/assets/Chica_Chaqueta_Azul.jpeg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el contenedor */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-repeat: no-repeat;
+}
+
 @keyframes moveLeft {
     0% {
         transform: translateX(100%);
