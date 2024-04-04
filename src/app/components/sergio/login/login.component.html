@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="login.component.scss"> <!-- Enlaza tu archivo de estilos CSS -->
 </head>
-<body>
-    <div class="login">
-        <form class="custom-form" method="post">
-          <h1>Login</h1>
-          <input
-            type="email"
-            [(ngModel)]="email"
-            name="email"
-            placeholder="Email"
-            required="required"
-          />
-          <input
-            type="password"
-            [(ngModel)]="password"
-            name="password"
-            placeholder="Password"
-            required="required"
-          />
-          <button type="submit" (click)="login()">Log in</button>
-        </form>
-      </div> 
+<body style="background-image: url('../../../../assets/chica_cami_cuadros.jpeg'); background-size: cover; background-repeat: no-repeat;">
+    <div class="container">
+        <div class="login">
+            <form class="custom-form" method="post">
+                <h1>Login</h1>
+                <input
+                    type="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    placeholder="Email"
+                    required="required"
+                />
+                <input
+                    type="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    placeholder="Password"
+                    required="required"
+                />
+                <button type="submit" (click)="login()">Log in</button>
+            </form>
+        </div>
+    </div> 
 </body>
 </html>

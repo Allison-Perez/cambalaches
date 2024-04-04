@@ -1,39 +1,46 @@
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  background: #ecf0f3;
-}
-
-h1 {
+body {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../../../assets/chica_cami_cuadros.jpeg'); /* Ruta de tu imagen de fondo */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login {
+  width: 100%;
+  max-width: 400px; /* Tamaño máximo del formulario */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7); /* Ajusta la opacidad del fondo del formulario */
+  border-radius: 10px; /* Ajusta el radio de borde para suavizar los bordes */
 }
 
 .custom-form {
-  min-width: 300px;
-  max-width: 60%;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: transparent; /* Fondo transparente */
   padding: 2rem 3rem;
   border-radius: 2.5rem;
-  background-color: #ecf0f3;
-  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
   color: black;
-  margin-top: 10rem;
 }
 
 .custom-form input {
   display: block;
-  margin: 2rem 0;
+  margin: 1rem 0;
   width: 100%;
   border-radius: 0.5rem;
   padding: 1rem;
   border: none;
-  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
-  border: 0 none;
-  background: #ebf5fc;
+  background: rgba(235, 245, 252, 0.7); /* Ajusta la opacidad del fondo de los campos de entrada */
 }
 
 .custom-form button {
@@ -45,9 +52,7 @@ h1 {
   font-weight: bold;
   background-color: #bcd8c1;
   width: 100%;
-  display: block;
   padding: 0.875rem 1rem;
   border-radius: 1.5rem;
-  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
   cursor: pointer;
 }
