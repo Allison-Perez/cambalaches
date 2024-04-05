@@ -1,0 +1,145 @@
+/* Header styles */
+.header {
+    position: relative;
+    background-color: rgba(235, 227, 227, 0.8);
+    box-shadow: 0 2px 4px rgba(6, 3, 219, 0.1);
+    padding: 20px 0; /* Aumentar el espacio en el encabezado */
+    z-index: 2; /* Asegurar que el encabezado esté por encima del fondo */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.header a:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #f44336;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.header a:hover:after {
+    opacity: 1;
+}
+
+/* Estilos para el contenedor de fondo */
+.background-container {
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+body {
+    padding-top: 60px; /* Ajustar el espacio para el header */
+    margin: 0;
+    background-image: url('/assets/Chica_Chaqueta_Azul.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: position 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    min-height: 100vh; /* Para ocupar toda la altura de la pantalla */
+}
+
+/* Estilos para los productos */
+.products-container {
+    padding: 50px 20px; /* Ajustar el espaciado alrededor de los productos */
+    display: flex; /* Mostrar productos en línea */
+    flex-wrap: wrap; /* Permitir que los productos se envuelvan en varias líneas */
+    gap: 20px; /* Espacio entre los productos */
+}
+.products-grid {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustar el tamaño de los productos */
+    gap: 20px;
+  }
+.product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff; /* Agregar un fondo blanco a los productos */
+    flex: 1 1 calc(33.33% - 20px); /* Ajustar el ancho de los productos y dejar espacio para el espacio entre ellos */
+}
+
+.product-content {
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px; /* Altura específica para la imagen */
+    object-fit: cover; /* Ajustar la imagen sin cubrir completamente */
+    border-radius: 8px; /* Ajustar el radio de borde */
+}
+
+.product-name {
+    font-size: 1rem; /* Ajustar el tamaño del nombre del producto */
+    margin-top: 10px;
+}
+
+.product-description {
+    margin-top: 10px;
+}
+
+.product-price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilos para el banner de publicidad */
+/* Estilos para el banner de publicidad */
+.ad-banner {
+    max-width: 100%; /* Ajusta el ancho máximo del banner */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    width: 100%; /* Ajusta el ancho del contenedor al 100% */
+}
+
+/* Estilos para la imagen dentro del banner */
+.ad-banner img {
+    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 10cqmax;/* Ajusta la altura automáticamente según el ancho */
+    display: block; /* Asegura que la imagen se muestre como un bloque */
+}
+
+.ad-banner {
+    background-color: #f0f0f0; /* Color de fondo del banner */
+    color: #333; /* Color del texto */
+    padding: 20px; /* Espaciado interno del banner */
+    position: fixed; /* Posición fija para que se mantenga en la pantalla */
+    left: 0; /* Alineado a la izquierda */
+    top: 50%; /* Alineado verticalmente en el centro */
+    transform: translateY(-50%); /* Centrar verticalmente */
+    width: 200px; /* Ancho del banner */
+    z-index: 999; /* Z-index alto para estar por encima de otros elementos */
+}
+
+.btn-add-to-cart {
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #333;
+}

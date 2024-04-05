@@ -9,9 +9,10 @@ import { SergioModule } from './components/sergio/sergio.module';
 import { SebastianModule } from './components/sebastian/sebastian.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

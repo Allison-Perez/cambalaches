@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar">
+    <button (click)="goBack()" class="back-button">Volver</button>
+  </nav>
+  <div class="container">
+    <div class="shopping-cart">
+      <div class="product" *ngFor="let cart of carts">
+        <img [src]="cart.image" [alt]="cart.title">
+        <div class="details">
+          <h3>{{ cart.title }}</h3>
+          <p>Precio: ${{ cart.price.toFixed(2) }}</p>
+          <div class="quantity-controls">
+            <button (click)="handleDec(cart.id)">-</button>
+            <input type="text" [value]="cart.quantity">
+            <button (click)="handleInc(cart.id)">+</button>
+          </div>
+          <button (click)="removeProduct(cart.id)">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <p>Total: ${{ total.toFixed(2) }}</p>
+      <button (click)="checkout()">Checkout</button>
+    </div>
+  </div>     
+</body>
+</html>
