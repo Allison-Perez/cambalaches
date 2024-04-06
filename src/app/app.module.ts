@@ -10,9 +10,11 @@ import { SebastianModule } from './components/sebastian/sebastian.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
+  
   ],
   imports: [
     BrowserModule,
