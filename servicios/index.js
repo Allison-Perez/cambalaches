@@ -22,6 +22,10 @@ const dbConfig = {
 };
 
 
+app.get('/', (req, res) => {
+  res.send('¡Este es un endpoint vacío!');
+});
+
 
 app.post("/registro", async (req, res) => {
   try {
