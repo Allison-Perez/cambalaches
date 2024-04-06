@@ -1,72 +1,65 @@
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">CAMBALACHES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Home">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/products">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contactanos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">Nosotros</a>
-                    </li>
-                </ul>
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <strong style="font-size: 24px; color: rgb(167, 126, 126); text-decoration: none;">CAMBALACHES</strong>
+            </a>
+            
+            <div>
+                <a href="/inicio" style="font-size: 20px; color: #ffffff; text-decoration: none; margin-right: 10px;">Inicio</a>
+                <a href="/productos" style="font-size: 20px; color: #ffffff; text-decoration: none; margin-right: 10px;">Productos</a>
+                <a href="/nosotros" style="font-size: 20px; color: #ffffff; text-decoration: none; margin-right: 10px;">Nosotros</a>
+                <a href="/contactanos" style="font-size: 20px; color: #ffffff; text-decoration: none;">Contáctanos</a>
             </div>
-            <div class="items-left">
-                <a href="/register"
-                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Registro</a>
-                <a href="/login"
-                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Entrar</a>
-                <a href="/cart"
-                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Carrito
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                </a>
+            
+
+            <!-- Botones -->
+            <div class="d-flex">
+                <a href="/register" class="btn btn-primary mx-2" style="font-size: 20px;">Registro</a>
+                <a href="/login" class="btn btn-secondary mx-2" style="font-size: 20px;">Entrar</a>
+                <a href="/cart" class="btn btn-success mx-2" style="font-size: 20px;">Carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </div>
+            
+            <!-- Botones de navegación -->
         </div>
     </nav>
-
-    <!-- Card dentro del header -->
-    <div class="card text-bg-dark mt-4">
-        <img src="assets/Chica_Chaqueta_Azul.jpeg" class="card-img" alt="Imagen de la moda">
-        <div class="card-img-overlay d-flex flex-column justify-content-center">
-            <h5 class="card-title animated-text banner-text text-center" style="font-size: 3em;">LO MAS NUEVO DE LA TEMPORADA</h5>
-            <div class="text-center">
-                <h2 class="animated-text"
-                    style="background-color: rgba(0, 0, 0, 0.5); color: rgb(255, 255, 255); padding: 10px; font-size: 1.5em;">
-                    La moda se transforma en expresión y la diversidad es la clave de tu armario.
-                </h2>
-            </div>
-            <!-- Texto "CAMBALACHES" dentro de la card -->
-            <div class="card-text animated-text text-center" style="font-size: 1.2em;">
-                <small class="text-body-secondary">CAMBALACHES</small>
-            </div>
-        </div>
-    </div>
 </header>
 
-<body>
-    <section class="text-white body-font mt-20 relative" style="margin: 0;">
-        <div class="container-fluid px-0 position-relative" style="padding-left: 0;">
-            <div class="text-bg-dark" style="display: block; transition: opacity 1s ease-in-out; opacity: 1;">
-                <!-- Contenido adicional aquí -->
+<!-- Card dentro del header -->
+<div class="card text-bg-dark mt-4"> <!-- Ajustamos el margen superior -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/Chica_Chaqueta_Azul.jpeg" class="d-block w-100" alt="Imagen de la moda 1">
             </div>
-            <div class="animated-text-container" style="align-items: flex-start;">
-                <div class="container mx-auto flex justify-center mt-10">
-                    <!-- Tu código de botones y enlaces aquí -->
-                </div>
+            <div class="carousel-item">
+                <img src="assets/n254OYG-kirby-wallpaper.jpg" class="d-block w-100" alt="Imagen de la moda 2">
+            </div>
+            <!-- Agrega más imágenes aquí según sea necesario -->
+            <div class="carousel-item">
+                <img src="assets/chica_cami_cuadros.jpeg" class="d-block w-100" alt="Imagen de la moda 2">
             </div>
         </div>
-    </section>
-</body>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+    <div class="card-img-overlay d-flex flex-column justify-content-center">
+        <!-- Contenido adicional -->
+        <h5 class="card-title animated-text banner-text text-center" style="font-size: 3em;">LO MAS NUEVO DE LA TEMPORADA</h5>
+        <div class="text-center">
+            <h2 class="animated-text" style="background-color: rgba(0, 0, 0, 0.5); color: rgb(255, 255, 255); padding: 10px; font-size: 1.5em;">
+                La moda se transforma en expresión y la diversidad es la clave de tu armario.
+            </h2>
+        </div>
+        <div class="card-text animated-text text-center" style="font-size: 1.9em; color: #ffffff; background-color: rgba(0, 0, 0, 0.5);">
+            <strong class="text-body-secondary">CAMBALACHES</strong>
+        </div>        
+    </div>
+</div>

@@ -1,128 +1,62 @@
-header {
-    background-color: rgb(235, 227, 227);
-    box-shadow: 0 2px 4px rgba(6, 3, 219, 0.1);
-    padding: 10px;
+/* Estilos para el navbar */
+.navbar {
+    background-color: var(--body-tertiary-color);
+    margin-bottom: 0; /* Elimina el margen inferior */
+    padding: 5px 0; /* Ajusta el relleno superior e inferior */
 }
 
-header a {
-    color: #000000;
+
+/* Estilos para los enlaces del navbar */
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
     text-decoration: none;
-    margin-right: 20px;
-    font-size: 16px;
-    position: relative; /* Añadido para los efectos hover */
+    border: 2px solid var(--black-color); /* Agrega bordes a los enlaces */
+    border-radius: 20px; /* Ajusta el radio de los bordes según tu preferencia */
+    padding: 8px 20px; /* Ajusta el relleno según sea necesario */
 }
 
-header a:after {
-    content: "";
-    width: 100%;
-    height: 2px;
-    background-color: #f44336;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    opacity: 0;
-    transition: all 0.3s ease;
+.navbar-nav .nav-link:hover {
+    color: var(--white-color);
+    background-color: var(--black-color);
 }
 
-header a:hover:after {
-    opacity: 1;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.flex-grow {
-    flex-grow: 1;
-}
-
-/* Button styles */
+/* Estilos para los botones en el header */
 .btn {
-    border: 1px solid #ffffff;
-    border-radius: 4px;
+    font-size: 20px;
 }
 
-/* Botones ajustados a la izquierda */
-.items-left {
-    display: flex;
-    align-items: center;
+.btn:hover {
+    color: var(--black-color);
+    background-color: var(--white-color);
 }
 
-.items-left .btn {
-    margin-right: 10px;
+/* Estilos para la card dentro del header */
+.card {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+    margin-top: -20px; /* Ajusta el margen superior para pegarlo a la navbar */
 }
 
-/* Hero section */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 142vh;
-    background-image: url('/cambalaches/src/assets/Chica_Chaqueta_Azul.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.card-title {
+    font-size: 3em;
 }
 
-@keyframes moveLeft {
-    0% {
-        transform: translateX(100%);
-    }
-    98% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.card-title.animated-text {
+    /* Agrega estilos de animación si lo deseas */
 }
 
-/* Media query para pantallas pequeñas */
-@media screen and (max-width: 768px) {
-    .animated-text-container {
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+.card-text {
+    font-size: 1.9em;
 }
 
-/* Animación para desplazar los botones hacia la izquierda */
-.move-left {
-    transform: translateX(-200px);
-    transition: transform 0.5s ease;
+/* Estilos específicos para el texto "CAMBALACHES" dentro de la card */
+.card-text strong {
+    color: var(--body-secondary-color);
 }
 
-/* Estilos para el texto "CAMBALACHES" */
-.text-body-secondary {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(255, 255, 255) !important;
-    padding: 10px;
-}
-
-/* Animación del texto del banner */
-@keyframes bannerAnimation {
+/* estilos.css */
+@keyframes desplazamiento {
     0% {
         transform: translateX(100%);
     }
@@ -131,30 +65,8 @@ body {
     }
 }
 
-.animated-text.banner-text {
-    animation: bannerAnimation 10s linear infinite;
+.card-title {
+    font-size: 3em;
+    animation: desplazamiento 20s linear infinite;
 }
 
-/* Estilos para el carrusel */
-.carousel-inner {
-    width: 100%;
-}
-
-.carousel-item {
-    position: relative;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease-in-out;
-}
-
-.carousel-item.active {
-    display: block;
-    opacity: 1;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px; /* Opcional: para bordes redondeados en las imágenes */
-}
