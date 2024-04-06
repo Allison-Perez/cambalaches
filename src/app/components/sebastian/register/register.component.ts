@@ -29,7 +29,6 @@ export class RegisterComponent {
   }
 
   onSubmit(){
-    console.log('entra mi perro');
 
     if (this.registerForm.valid) {
       this.showError = false;

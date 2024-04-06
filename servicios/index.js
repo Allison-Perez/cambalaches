@@ -57,7 +57,7 @@ app.post("/registro", async (req, res) => {
               primerApellido,
               correo,
               passwordEncriptado,
-              2, // Este es el idRol, se establece en 2
+              2,
             ]);
 
     console.log("Usuario creado exitosamente");
@@ -73,7 +73,6 @@ app.post("/registro", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  console.log('entra');
   try {
     const connection = await mysql.createConnection(dbConfig);
     const { correo, password } = req.body;
@@ -104,6 +103,34 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ error: "Error en el inicio de sesión" });
   }
 });
+
+// INFORMACION PERFIL
+
+
+app.get('/api/obtener-usuario', async (req, res) => {
+    console.log('entra');
+  const correo = req.query.correo;
+  console.log(correo);
+  const sql = `SELECT primerNombre, primerApellido, correo, password FROM usuarios WHERE correo = ?`;
+
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+
+    const [rows] = await connection.execute(sql, [correo]);
+
+    await connection.end();
+    if (rows.length === 1) {
+      const usuario = rows[0];
+      res.json(usuario);
+    } else {
+      res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    console.error('Error al obtener el usuario: ' + error);
+    res.status(500).json({ error: 'Error al obtener el usuario' });
+  }
+});
+
 
 
 app.listen(PORT, () => {

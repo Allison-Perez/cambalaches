@@ -40,8 +40,11 @@ export class LoginComponent {
         if (response) {
           const email = this.loginForm.value.correo;
           localStorage.setItem('user_email', JSON.stringify(email));
+          const userRole = response.idRol;
+          const userInfo = response.userInfo;
+          this.redirectToRoleView(userRole);
+          this.authService.setAuthenticationStatus(true, userRole, userInfo);
 
-          this.router.navigate(['/home']);
 
 
         } else {
@@ -61,7 +64,7 @@ export class LoginComponent {
         this.router.navigate(['/admin']);
         break;
       case 2:
-        this.router.navigate(['/index.katalina']);
+        this.router.navigate(['/home']);
         break;
       default:
         break;
