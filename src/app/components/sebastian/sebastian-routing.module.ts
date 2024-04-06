@@ -6,12 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProductsComponent } from './products/products.component';
 
+
 const routes: Routes = [
   { path: "register", component: RegisterComponent, pathMatch: "full" },
   { path: "cart", component: CartComponent, pathMatch: "full" },
   { path: "home", component: HomeComponent, pathMatch: "full"},
   { path: "logout", component: LogoutComponent, pathMatch: "full" },
-  { path: "products", component: ProductsComponent, pathMatch: "full" }
+  { path: "products", component: ProductsComponent, pathMatch: "full" },
+  
 ];
 
 
