@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="login.component.scss"> <!-- Enlaza tu archivo de estilos CSS -->
-</head>
+
 <body style="background-image: url('../../../../assets/chica_cami_cuadros.jpeg'); background-size: cover; background-repeat: no-repeat;">
     <div class="container">
         <div class="login">
-            <form class="custom-form" method="post">
-                <h1>Login</h1>
-                <input
-                    type="email"
-                    [(ngModel)]="email"
-                    name="email"
-                    placeholder="Email"
-                    required="required"
-                />
-                <input
-                    type="password"
-                    [(ngModel)]="password"
-                    name="password"
-                    placeholder="Password"
-                    required="required"
-                />
-                <button type="submit" (click)="login()">Login</button>
-            </form>
-        </div>
-    </div> 
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form_right_section">
+            <div class="right_section_form_inputs">
+              <div class="input-container">
+                <i class="fas fa-envelope icono"></i>
+                <input class="input_form_login" type="email" placeholder="Email" formControlName="correo">
+              </div>
+              <div class="input-container">
+                <i class="fa-solid fa-unlock icono"></i>
+                <input class="input_form_login" type="password" placeholder="Password" formControlName="password">
+              </div>
+            </div>
+
+            <a class="link_register_password" href="registro">Regístrate</a>
+            <button type="submit" class="boton_enviar_formulario">Acceder</button>
+          </form>
+    </div>
+
+  </div>
 </body>
-</html>
+

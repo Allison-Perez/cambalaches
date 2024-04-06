@@ -1,6 +1,10 @@
-// register.component.ts
-
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { ServiceService } from '../service/service.service';
+
 
 @Component({
   selector: 'app-register',
@@ -8,23 +12,40 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  tipoDocumento: string | undefined;
-  numeroDocumento: string | undefined;
-  nombre: string | undefined;
-  apellido: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
-  confirmPassword: string | undefined;
 
-  register() {
-    // Aquí iría la lógica para registrar al usuario
-    console.log('Registro de usuario:', {
-      tipoDocumento: this.tipoDocumento,
-      numeroDocumento: this.numeroDocumento,
-      nombre: this.nombre,
-      apellido: this.apellido,
-      email: this.email,
-      password: this.password
+  infoUser = {};
+  registerForm: FormGroup;
+  showError: boolean = false;
+
+  constructor(private http: ServiceService, private fb: FormBuilder, private router: Router){
+    this.registerForm = this.fb.group({
+      primerNombre: ['', Validators.required],
+      primerApellido: ['', Validators.required],
+      tipo_documento: ['', Validators.required], // Aquí está definido como 'tipoDocumento'
+      correo: ['', [Validators.required, Validators.email]],
+      documento: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
+  }
+
+  onSubmit(){
+    if (this.registerForm.valid) {
+      this.showError = false;
+
+      const formData = this.registerForm.value;
+
+      this.http.register(formData).pipe(
+        catchError(error => {
+          return of(null);
+        })
+      ).subscribe(response => {
+        if (response) {
+          this.router.navigate(['/login']);
+        }
+      });
+
+    } else {
+      this.showError = true;
+    }
   }
 }
