@@ -1,9 +1,39 @@
 <header>
-    <div class="container flex items-center justify-between">
-        <div>
-            <a href="/" class="flex cursor-pointer title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <span class="ml-3 text-2xl font-bold">CAMBALACHES</span>
-            </a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">CAMBALACHES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="items-left">
+                <a href="/register"
+                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Registro</a>
+                <a href="/login"
+                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Entrar</a>
+                <a href="/cart"
+                    class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2">Carrito
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
         <nav class="flex-grow flex justify-center">
             <a href="/Home" class="mr-4 hover:text-gray-900 btn">Inicio</a>
@@ -18,7 +48,8 @@
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
         </div>
-    </div>
+    </nav>
+
 </header>
 
 <body style="background-image: url('assets/Chica_Chaqueta_Azul.jpeg'); background-size: cover; background-repeat: no-repeat;">
@@ -28,24 +59,11 @@
             <div class="text-bg-dark" style="display: block; transition: opacity 1s ease-in-out; opacity: 1;">
                 <!-- Contenido adicional aquí -->
             </div>
-            <div class="animated-text-container">
-                <h1 class="animated-text">LO MAS NUEVO DE LA TEMPORADA</h1>
-                <div style="text-align: center;">
-                    <h2 class="animated-text">La moda se transforma en expresión y la diversidad es la clave de tu armario.</h2>
-                    <p class="animated-text"><small class="text-body-secondary">CAMBALACHES</small></p>
+            <div class="animated-text-container" style="align-items: flex-start;">
+                <div class="container mx-auto flex justify-center mt-10">
+                    <!-- Tu código de botones y enlaces aquí -->
                 </div>
             </div>
         </div>
-        <div class="container mx-auto flex justify-center mt-10">
-            <!-- Tu código de botones y enlaces aquí -->
-        </div>
     </section>
-
 </body>
-
-
-
-
-
-
-
