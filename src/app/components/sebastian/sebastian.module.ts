@@ -10,13 +10,15 @@ import { ProductsComponent } from './products/products.component';
 
 
 
+
 @NgModule({
   declarations: [
     RegisterComponent,
     CartComponent,
     HomeComponent,
     LogoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    
     
   ],
   imports: [
