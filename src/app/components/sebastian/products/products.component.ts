@@ -13,18 +13,7 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loadProducts();
-  }
-
-  loadProducts(): void {
-    this.productService.getProducts().subscribe(
-      (data: any) => {
-        this.products = data; // Suponiendo que el servicio devuelve un array de productos
-      },
-      (error: any) => {
-        console.error('Error al cargar los productos:', error);
-      }
-    );
+    this.products = this.productService.getProducts();
   }
 
   addToCart(product: any): void {
