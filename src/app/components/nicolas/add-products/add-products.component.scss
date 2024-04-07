@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Icono de la cámara retro */
+.fa-camera-retro {
+  color: #0de8d9; /* Color del icono de la cámara */
+  font-size: 10em; /* Tamaño del icono */
+  opacity: 0.5; /* Opacidad para que sea menos prominente */
+}
+
+/* Contenedor del icono de la cámara */
+.camera-icon-container {
+  position: relative; /* Cambiado a relativo */
+  display: flex; /* Alineación de centro */
+  justify-content: center; /* Alineación de centro */
+  align-items: center; /* Alineación de centro */
+  width: 100%; /* Ancho completo del contenedor */
+  height: 100%; /* Altura completa del contenedor */
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 50px; /* Aumentar el padding en todos los lados */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+h1 {
+  text-align: center;
+}
+  
+.form-container {
+  display: flex;
+}
+
+form {
+  flex: 1;
+  margin-right: 20px;
+}
+  
+.preview-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.image-frame img {
+  width: 100%; /* Ajusta la imagen al ancho del contenedor */
+  height: 100%; /* Ajusta la imagen a la altura del contenedor */
+  object-fit: cover; /* Hace que la imagen ocupe todo el contenedor sin deformarla */
+  display: block;
+}
+    
+.image-frame {
+  width: 200%; /* Ajusta el ancho del cuadro al 100% del contenedor */
+  height: 500px; /* Ajusta la altura del cuadro */
+  max-width: 400px; /* Añadido para evitar que el cuadro de la imagen se haga demasiado grande */
+  max-height: 400px; /* Añadido para evitar que el cuadro de la imagen se haga demasiado grande */
+  border: 2px solid #07ecec; /* Color del marco */
+  border-radius: 8px;
+  overflow: hidden;
+}
+  
+label {
+  margin-bottom: 5px;
+}
+  
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+  
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+  
+button:hover {
+  background-color: #0056b3;
+}
+  
+input[type="file"] {
+  margin-bottom: 15px;
+}
+
+#preview {
+  margin-top: 10px;
+  max-width: 100%;
+}

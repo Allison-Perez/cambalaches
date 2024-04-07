@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NicolasModule } from './components/nicolas/nicolas.module';
 import { SergioModule } from './components/sergio/sergio.module';
 import { SebastianModule } from './components/sebastian/sebastian.module';
+import { AddProductsComponent } from './components/nicolas/add-products/add-products.component';
 
 
 
@@ -15,6 +16,7 @@ import { SebastianModule } from './components/sebastian/sebastian.module';
 @NgModule({
   declarations: [
     AppComponent,
+    AddProductsComponent,
   
   ],
   imports: [
