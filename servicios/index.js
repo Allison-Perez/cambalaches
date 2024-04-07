@@ -17,7 +17,7 @@ const dbConfig = {
   host: "localhost",
   user: "root",
   port:"3306",
-  password: "",
+  password: "111019As",
   database: "cambalaches",
 };
 
@@ -128,6 +128,70 @@ app.get('/api/obtener-usuario', async (req, res) => {
   } catch (error) {
     console.error('Error al obtener el usuario: ' + error);
     res.status(500).json({ error: 'Error al obtener el usuario' });
+  }
+});
+
+
+// SUBIR PRODUCTOS
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    const extname = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + Date.now() + extname);
+  }
+});
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+const upload = multer({ storage: storage });
+
+app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
+  try {
+    const { titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador } = req.body;
+    const correoUsuario = req.body.correo;
+    let urlImagen = '';
+
+    if (!correoUsuario) {
+      return res.status(400).json({ error: "El campo 'correo' es obligatorio" });
+    }
+
+    const sqlUsuario = `SELECT identificador FROM usuarios WHERE correo = ?`;
+    const connectionUsuario = await mysql.createConnection(dbConfig);
+    const [rowsUsuario] = await connectionUsuario.execute(sqlUsuario, [correoUsuario]);
+    await connectionUsuario.end();
+
+    if (rowsUsuario.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    const idUsuario = rowsUsuario[0].identificador;
+
+    if (req.file) {
+      urlImagen = 'http://localhost:3000/' + req.file.path;
+    } else {
+      urlImagen = 'http://localhost:3000/uploads/Chica_Chaqueta_Azul.jpeg';
+    }
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    if (titulo && descripcion && idUsuario) {
+      const sql = `INSERT INTO productos (titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, imagenOpcional)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+
+      await connection.execute(sql, [titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, null]);
+
+      connection.end();
+
+      res.status(201).json({ message: "Producto publicado correctamente" });
+    } else {
+      res.status(400).json({ error: "Faltan campos obligatorios para crear el producto" });
+    }
+  } catch (error) {
+    console.error("Error al crear el producto:", error);
+    res.status(500).json({ error: "Error al crear el producto" });
   }
 });
 
