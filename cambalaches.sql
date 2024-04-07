@@ -66,3 +66,6 @@ CREATE TABLE `productos` (
   FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`identificador`)
 );
 
+
+
+

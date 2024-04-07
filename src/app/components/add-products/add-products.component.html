@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Producto</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Subir Producto</h1>
+        <div class="form-container">
+          <form id="productForm">
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" id="productName" name="productName" required>
+            
+            <label for="productDescription">Descripción del Producto:</label>
+            <textarea id="productDescription" name="productDescription" required></textarea>
+            
+            <label for="productPrice">Precio:</label>
+            <input type="number" id="productPrice" name="productPrice" required>
+            
+            <label for="productCategory">Categoría:</label>
+            <select id="productCategory" name="productCategory" required>
+              <option value="">Seleccionar Categoría</option>
+              <option value="Electrónica">Electrónica</option>
+              <option value="Ropa">Ropa</option>
+              <option value="Hogar">Hogar</option>
+              <option value="Libros">Libros</option>
+              <option value="Otros">Otros</option>
+            </select>
+            
+            <label for="productStatus">Estado:</label>
+            <select id="productStatus" name="productStatus" required>
+              <option value="Disponible">Disponible</option>
+              <option value="No disponible">No disponible</option>
+            </select>
+            
+            <label for="productImage">Imagen del Producto:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*" (change)="onFileChanged($event)" required>
+            
+            <button type="submit">Subir Producto</button>
+          </form>
+          
+          <div class="preview-container">
+            <div class="image-frame">
+              <img *ngIf="imageSrc" [src]="imageSrc" alt="Vista Previa de la Imagen">
+            </div>
+          </div>
+        </div>
+      </div>
+       
+    <script>
+        function previewImage(event) {
+            var preview = document.getElementById('preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
