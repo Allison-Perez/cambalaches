@@ -30,4 +30,11 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user_email');
   }
+
+  setAuthenticationStatus(status: boolean, role: number, userInfo: any): void {
+    this._isAuthenticated = status;
+    this._userRole = role;
+    this._userInfo = userInfo;
+  }
+
 }

@@ -20,7 +20,9 @@ export class ServiceService {
     return this.http.post(`${this.apiUrl}/registro`, data);
   }
 
-  recuperar(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/recuperar`, data);
+  getUserInfoByEmail(email: string): Observable<any> {
+    const url = `${this.apiUrl}/api/obtener-usuario?correo=${email}`;
+    return this.http.get(url);
   }
+
 }
