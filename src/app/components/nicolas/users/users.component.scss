@@ -53,10 +53,10 @@ body {
 .perfil-usuario .portada-perfil {
     display: block;
     background-size: cover;
-    background-position: center;
+    background-position: center 25%; /* Ajuste para que la imagen se alinee hacia arriba y esté centrada verticalmente */
     background-repeat: no-repeat;
     position: relative;
-    height: 20rem;
+    height: 25rem;
     margin-bottom: .5rem;
 }
 .perfil-usuario .avatar-perfil {
