@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
-interface CartItem {
+interface Product {
   id: number;
   title: string;
   price: number;
-  quantity: number;
   image: string;
-  categorias: string;
+  quantity: number;
 }
 
 @Component({
@@ -15,74 +13,41 @@ interface CartItem {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
-  carts: CartItem[] = [];
-  total: number = 0;
+export class CartComponent {
+total: any;
+handleInc(arg0: any) {
+throw new Error('Method not implemented.');
+}
+handleDec(arg0: any) {
+throw new Error('Method not implemented.');
+}
+  products: Product[] = [
+    { id: 1, title: "Producto 1", price: 10.00, image: "imagen1.jpg", quantity: 1 },
+    { id: 2, title: "Producto 2", price: 20.00, image: "imagen2.jpg", quantity: 1 },
+    { id: 3, title: "Producto 3", price: 30.00, image: "imagen3.jpg", quantity: 1 }
+  ];
+carts: any;
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    // Simulación de carga de datos del carrito desde localStorage o una API
-    this.loadCartData();
+  getTotal(): number {
+    return this.products.reduce((total, product) => total + (product.price * product.quantity), 0);
   }
 
-  loadCartData() {
-    // Aquí puedes cargar los datos del carrito desde localStorage o una API
-    // Por ejemplo, cargar los datos desde localStorage si existen
-    const cartData = localStorage.getItem('cart');
-    if (cartData) {
-      this.carts = JSON.parse(cartData);
-      this.calculateTotal();
+  handleQuantity(product: Product, change: number): void {
+    product.quantity += change;
+    if (product.quantity < 1) {
+      this.removeProduct(product);
     }
   }
- 
-  calculateTotal() {
-    this.total = this.carts.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+  removeProduct(product: Product): void {
+    const index = this.products.indexOf(product);
+    if (index !== -1) {
+      this.products.splice(index, 1);
+    }
   }
 
-  handleInc(id: number) {
-    const updatedCart = this.carts.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1
-        };
-      }
-      return item;
-    });
-    this.updateCart(updatedCart);
-  }
-
-  handleDec(id: number) {
-    const updatedCart = this.carts.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity - 1
-        };
-      }
-      return item;
-    }).filter(item => item.quantity > 0); // Eliminar elementos con cantidad cero
-    this.updateCart(updatedCart);
-  }
-
-  removeProduct(id: number) {
-    const updatedCart = this.carts.filter(item => item.id !== id);
-    this.updateCart(updatedCart);
-  }
-
-  updateCart(updatedCart: CartItem[]) {
-    this.carts = updatedCart;
-    this.calculateTotal();
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-  }
-
-  checkout() {
-    // Aquí puedes implementar la lógica para el proceso de pago
-    // Por ejemplo, redirigir a una página de pago
-    this.router.navigate(['/checkout']);
-  }
-  goBack() {
-    this.router.navigate(['/index']);
+  checkout(): void {
+    // Lógica de procesamiento de la orden
+    console.log("Procesando el checkout...");
   }
 }

@@ -17,11 +17,11 @@
           <h3>{{ cart.title }}</h3>
           <p>Precio: ${{ cart.price.toFixed(2) }}</p>
           <div class="quantity-controls">
-            <button (click)="handleDec(cart.id)">-</button>
+            <button (click)="handleQuantity(cart, -1)">-</button>
             <input type="text" [value]="cart.quantity">
-            <button (click)="handleInc(cart.id)">+</button>
+            <button (click)="handleQuantity(cart, 1)">+</button>
           </div>
-          <button (click)="removeProduct(cart.id)">Remove</button>
+          <button (click)="removeProduct(cart)">Remove</button>
         </div>
       </div>
     </div>
