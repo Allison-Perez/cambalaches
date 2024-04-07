@@ -1,24 +1,25 @@
-
-<body style="background-image: url('../../../../assets/chica_cami_cuadros.jpeg'); background-size: cover; background-repeat: no-repeat;">
-    <div class="container">
-        <div class="login">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form_right_section">
-            <div class="right_section_form_inputs">
-              <div class="input-container">
-                <i class="fas fa-envelope icono"></i>
-                <input class="input_form_login" type="email" placeholder="Email" formControlName="correo">
-              </div>
-              <div class="input-container">
-                <i class="fa-solid fa-unlock icono"></i>
-                <input class="input_form_login" type="password" placeholder="Password" formControlName="password">
-              </div>
-            </div>
-
-            <a class="link_register_password" href="registro">Regístrate</a>
-            <button type="submit" class="boton_enviar_formulario">Acceder</button>
-          </form>
+<body>
+  <div class="container">
+    <div class="login">
+      <form class="custom-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" method="post">
+        <h1>Login</h1>
+        <input
+          class="input_form_login"
+          type="email"
+          placeholder="Email"
+          formControlName="correo"
+          required
+        />
+        <input
+          class="input_form_login"
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <button type="submit" class="boton_enviar_formulario">Acceder</button>
+        <a class="link_register_password" href="registro">Regístrate</a> 
+      </form>
     </div>
-
   </div>
 </body>
-

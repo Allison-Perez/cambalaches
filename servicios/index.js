@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 const dbConfig = {
   host: "localhost",
   user: "root",
-  // port:"3306",
-  password: "111019As",
+  port:"3306",
+  password: "",
   database: "cambalaches",
 };
 
