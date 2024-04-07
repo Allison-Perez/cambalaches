@@ -7,7 +7,7 @@
 </head>
 <body>
   <nav class="navbar">
-    <button (click)="goBack()" class="back-button">Volver</button>
+    <button onclick="goBack()" class="back-button">Volver</button>
   </nav>
   <div class="container">
     <div class="shopping-cart">
@@ -31,5 +31,10 @@
       <button (click)="checkout()">Checkout</button>
     </div>
   </div>     
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 </body>
 </html>
