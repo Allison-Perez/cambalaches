@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
-  <link rel="stylesheet" href="cart.component.scss">
 </head>
-
 <body>
   <nav class="navbar">
-    <button onclick="goBack()">Volver</button>
+    <a href="/" class="btn-volver">Volver</a>
   </nav>
+  
 
   <div class="container">
     <div class="product-details">
       <h2>Detalles del Producto</h2>
-      <div *ngFor="let product of productosEnCarrito" class="product-detail">
-        <img [src]="product.urlImagen" alt="Imagen del producto"> <!-- Modificado -->
-        <div>
-          <h3>{{ product.titulo }}</h3> <!-- Modificado -->
+      <div *ngFor="let product of productosEnCarrito" class="product">
+        <img [src]="product.urlImagen" alt="Imagen del producto">
+        <div class="details">
+          <h3>{{ product.titulo }}</h3>
           <p><strong>Precio:</strong> ${{ product.precio }}</p>
           <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
           <button (click)="handleQuantity(product, -1)">-</button>
@@ -27,7 +25,7 @@
           <button (click)="removeProduct(product)">Eliminar</button>
         </div>
       </div>
-      <div *ngIf="productosEnCarrito.length === 0">No hay productos en el carrito</div>
+      <div *ngIf="productosEnCarrito.length === 0" class="no-products">No hay productos en el carrito</div>
       <div class="total">Total: ${{ calcularTotal() }}</div>
     </div>
     <div class="payment-methods">
@@ -48,9 +46,10 @@
 
   <script>
     function goBack() {
-      window.history.back();
+      window.location.href = "/";
     }
   </script>
+  
 </body>
 
 </html>

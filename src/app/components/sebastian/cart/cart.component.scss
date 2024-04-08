@@ -2,7 +2,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #e46e24e1;
   margin: 0;
   padding: 0;
 }
@@ -15,21 +15,25 @@ body {
   justify-content: space-between;
 }
 
-.product-details {
-  width: 60%;
-  background-color: #fff;
+.product-details,
+.payment-methods {
+  width: 48%;
+  background-color: #ffffffc0;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  text-align: center; /* Centrar el texto */
 }
 
-.product-details h2 {
+.product-details h2,
+.payment-methods h2 {
   margin-top: 0;
 }
 
 .product {
   display: flex;
   margin-bottom: 20px;
+  justify-content: center; /* Centrar los elementos */
 }
 
 .product img {
@@ -39,6 +43,7 @@ body {
 
 .product .details {
   flex-grow: 1;
+  text-align: left; /* Alinear el texto a la izquierda */
 }
 
 .product .details h3 {
@@ -52,16 +57,8 @@ body {
   color: #666;
 }
 
-.payment-methods {
-  width: 35%;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.payment-methods h2 {
-  margin-top: 0;
+.no-products {
+  margin-top: 20px; /* Espacio superior para el mensaje */
 }
 
 .payment-methods form {
@@ -73,17 +70,26 @@ body {
 }
 
 .checkout-button {
-  width: 100%;
   text-align: center;
   margin-top: 20px;
 }
 
-.checkout-button button {
-  background-color: #ff6000;
+/* styles.css */
+
+.btn-volver {
+  background-color: #0cc91c;
   border: none;
-  cursor: pointer;
   padding: 10px 20px;
   font-size: 18px;
   color: #fff;
   border-radius: 5px;
+  text-decoration: none; /* Para quitar la subrayado de los enlaces */
 }
+
+.btn-volver:hover {
+  background-color: #0aa218; /* Cambia el color de fondo al pasar el cursor */
+}
+
+
+
+

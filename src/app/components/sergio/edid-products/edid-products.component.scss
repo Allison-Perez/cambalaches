@@ -1,96 +1,129 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #bb8181; /* Color de fondo de la página */
+}
 
-  .header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
+.header {
+  background-color: #d50303;
+  color: #b46a6a;
+  padding: 20px;
+  text-align: center;
+}
 
-  .sidebar {
-    background-color: #555;
-    color: #fff;
-    width: 250px;
-    height: 100vh;
-    float: left;
-  }
+.sidebar {
+  background-color: #000000;
+  color: #cc8f8f;
+  width: 250px;
+  height: 100vh;
+  float: left;
+}
 
-  .content {
-    padding: 20px;
-    margin-left: 250px;
-  }
+.content {
+  padding: 20px;
+  margin: 0 auto; /* Centrar el contenido */
+  max-width: 1220px; /* Ancho máximo del contenido */
+}
 
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  .sidebar ul li {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  .sidebar ul li:hover {
-    background-color: #444;
-  }
+.sidebar ul li:hover {
+  background-color: #444;
+}
 
-  .main-content {
-    background-color: #f4f4f4;
-    padding: 20px;
-  }
-/* Estilos adicionales */
-table {
+.main-content {
+  background-color: #c49e9e;
+  padding: 20px;
+}
+
+/* Estilos para la tabla */
+.custom-table {
   border-collapse: collapse;
   width: 100%;
 }
 
-th, td {
-  border: 1px solid #dddddd;
+.custom-table th,
+.custom-table td {
+  border: 1px solid #00000088;
   text-align: left;
   padding: 8px;
 }
 
-th {
-  background-color: #f2f2f2;
+.custom-table th {
+  background-color: #e9e8e8;
+  font-weight: bold;
 }
 
+/* Estilos para los botones */
 .btn {
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 5px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #000306;
 }
 
 .btn-danger {
   background-color: #dc3545;
 }
-/* edid-products.component.scss */
 
-.btn-eliminar {
-  background-color: #FF4136; /* Color de fondo rojo */
-  color: white; /* Color del texto blanco */
-  border: none; /* Sin borde */
-  padding: 8px 16px; /* Espaciado interno */
-  border-radius: 4px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor de puntero */
-  transition: background-color 0.3s; /* Transición suave del color de fondo */
-
-  /* Estilos al pasar el ratón por encima */
-  &:hover {
-    background-color: #D30F0A; /* Color de fondo más oscuro al pasar el ratón */
-  }
-
-  /* Estilos al hacer clic */
-  &:active {
-    background-color: #B70C09; /* Color de fondo aún más oscuro al hacer clic */
-  }
+/* Estilos adicionales */
+.btn-edit {
+  background-color: #5cd1de;
 }
+
+.btn-delete {
+  background-color: #ec0a0ac9;
+}
+
+.btn-save {
+  background-color: #09cbed;
+}
+
+/* Estilos para los elementos del formulario */
+.cell-input,
+.cell-select {
+  width: calc(100% - 20px);
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.product-image {
+  max-width: 100px;
+}
+
+/* Estilos para el botón de regresar */
+.btn-back {
+  margin-top: 3px; /* Espaciado superior */
+  margin-left: 10px; /* Espaciado izquierdo */
+  margin-right: 10px; /* Espaciado derecho */
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4e35dcb9; /* Color de fondo del botón */
+  color: rgb(0, 0, 0); /* Color del texto del botón */
+  border: none;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background-color: #662fada9; /* Color de fondo del botón al pasar el cursor */
+}
+
+

@@ -47,7 +47,7 @@
 body {
     padding-top: 60px; /* Ajustar el espacio para el header */
     margin: 0;
-    background-image: url('/assets/Chica_Chaqueta_Azul.jpeg');
+    background-image: url('/assets/Chica_Chaqueta_Azul.png');
     background-size: cover;
     background-repeat: no-repeat;
     background: position 2px;
@@ -55,6 +55,14 @@ body {
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
     min-height: 100vh; /* Para ocupar toda la altura de la pantalla */
+}
+
+/* Estilos para los productos */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Alinea los productos hacia la derecha */
+    margin-bottom: 20px; /* Espacio entre filas de productos */
 }
 
 /* Estilos para las tarjetas de productos */
@@ -66,7 +74,9 @@ body {
     background-color: #c6a2a2b0;
     text-align: center;
     margin-right: 20px; /* Espacio entre tarjetas de productos */
-    margin-bottom: 20px; /* Espacio entre filas de productos */
+    display: flex;
+    flex-direction: column; /* Para alinear verticalmente */
+    justify-content: center; /* Para alinear verticalmente */
 }
 
 /* Estilos para las imágenes de los productos */
@@ -78,11 +88,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Estilos para el título de los productos */
-.producto-card h3 {
-    margin-top: 0; /* Ajusta el margen superior del título */
-    margin-bottom: 10px; /* Ajusta el margen inferior del título */
-}
 
 /* Estilos para la información del producto */
 .producto-card p {
@@ -90,22 +95,12 @@ body {
     font-size: 16px;
 }
 
-/* Estilos para el contenedor de productos */
-.products-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end; /* Alinea los productos hacia la derecha */
-}
-
-
 /* Estilos para el banner de publicidad */
 .ad-banner {
     max-width: 100%; /* Ajusta el ancho máximo del banner */
     overflow: hidden; /* Oculta cualquier contenido que se desborde */
     width: 100%; /* Ajusta el ancho del contenedor al 100% */
 }
-
-
 
 /* Estilos para la imagen dentro del banner */
 .ad-banner img {

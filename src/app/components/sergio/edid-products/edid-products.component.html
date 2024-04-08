@@ -1,50 +1,74 @@
-<div style="margin-top: 20px;">
-  <h2 style="text-align: center;">Productos Registrados</h2>
-  <table id="productos-table">
+<div class="content" style="text-align: center; background-color: #f4f4f4;">
+  <table class="custom-table" style="margin: 0 auto;">
+    <!-- Encabezado de la tabla -->
     <thead>
       <tr>
-        <th>Identificador</th>
-        <th>Título</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Categoría</th>
-        <th>Estado</th>
-        <th>Imagen del producto</th>
-        <th>Acciones</th>
+        <th colspan="8">Productos Registrados</th>
+      </tr>
+      <tr>
+        <th class="cell">Identificador</th>
+        <th class="cell">Título</th>
+        <th class="cell">Descripción</th>
+        <th class="cell">Precio</th>
+        <th class="cell">Categoría</th>
+        <th class="cell">Estado</th>
+        <th class="cell">Imagen del producto</th>
+        <th class="cell">Acciones</th>
       </tr>
     </thead>
+    <!-- Cuerpo de la tabla -->
     <tbody>
+      <!-- Filas de productos -->
       <tr *ngFor="let producto of productos">
-        <td>{{ producto.identificador }}</td>
-        <td>{{ producto.titulo }}</td>
-        <td>{{ producto.descripcion }}</td>
-        <td>{{ producto.precio }}</td>
-        <td>{{ producto.categoria }}</td>
-        <td>{{ producto.estado }}</td>
-        <td><img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px;"></td>
-        <td>
-          <button class="btn bg-black text-white hover:bg-white hover:text-black rounded" (click)="editarProducto(producto)">Editar</button>
-          <button class="btn-eliminar" (click)="eliminarProducto(producto)">Eliminar</button>
+        <!-- Datos del producto -->
+        <td class="cell">{{ producto.identificador }}</td>
+        <td class="cell">{{ producto.titulo }}</td>
+        <td class="cell">{{ producto.descripcion }}</td>
+        <td class="cell">{{ producto.precio }}</td>
+        <td class="cell">{{ producto.categoria }}</td>
+        <td class="cell">{{ producto.estado }}</td>
+        <td class="cell"><img [src]="producto.urlImagen" alt="Imagen del producto" class="product-image"></td>
+        <!-- Botones de acción -->
+        <td class="cell">
+          <button class="btn btn-edit" (click)="editarProducto(producto)">Editar</button>
+          <button class="btn btn-delete" (click)="eliminarProducto(producto)">Eliminar</button>
         </td>
       </tr>
+      <!-- Fila de edición -->
       <tr *ngIf="editMode">
-        <td colspan="7">
-          <h2>Editar Producto</h2>
-          <form (ngSubmit)="guardarCambios()">
-            <input type="text" [(ngModel)]="productoSeleccionado.titulo" name="titulo" placeholder="Título">
-            <input type="text" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" placeholder="Descripción">
-            <input type="number" [(ngModel)]="productoSeleccionado.precio" name="precio" placeholder="Precio">
-            <select [(ngModel)]="productoSeleccionado.categoria_identificador" name="categoria_identificador">
-              <option *ngFor="let categoria of categorias" [value]="categoria.identificador">{{ categoria.nombre }}</option>
-            </select>
-            <select [(ngModel)]="productoSeleccionado.estadoProducto_identificador" name="estadoProducto_identificador">
-              <option *ngFor="let estado of estadosProducto" [value]="estado.identificador">{{ estado.nombre }}</option>
-            </select>
-            <button type="submit">Guardar Cambios</button>
+        <td colspan="8">
+          <!-- Formulario de edición -->
+          <h2 class="form-title">Editar Producto</h2>
+          <form (ngSubmit)="guardarCambios()" class="edit-form">
+            <div class="form-group">
+              <label>Título:</label>
+              <input type="text" [(ngModel)]="productoSeleccionado.titulo" name="titulo" placeholder="Título" class="cell-input">
+            </div>
+            <div class="form-group">
+              <label>Descripción:</label>
+              <input type="text" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" placeholder="Descripción" class="cell-input">
+            </div>
+            <div class="form-group">
+              <label>Precio:</label>
+              <input type="number" [(ngModel)]="productoSeleccionado.precio" name="precio" placeholder="Precio" class="cell-input">
+            </div>
+            <div class="form-group">
+              <label>Categoría:</label>
+              <select [(ngModel)]="productoSeleccionado.categoria_identificador" name="categoria_identificador" class="cell-select">
+                <option *ngFor="let categoria of categorias" [value]="categoria.identificador">{{ categoria.nombre }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Estado:</label>
+              <select [(ngModel)]="productoSeleccionado.estadoProducto_identificador" name="estadoProducto_identificador" class="cell-select">
+                <option *ngFor="let estado of estadosProducto" [value]="estado.identificador">{{ estado.nombre }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-save">Guardar Cambios</button>
+            <button class="btn btn-back" onclick="history.go(-1)">Regresar</button>
           </form>
         </td>
       </tr>
-
     </tbody>
   </table>
 </div>
