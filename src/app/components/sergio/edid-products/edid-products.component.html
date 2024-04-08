@@ -1,75 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración</title>
-</head>
-<body>
-  <div class="header">
-    <h1>Panel de Administración</h1>
-  </div>
-  
-  <div class="sidebar">
-    <ul>
-      <li>Inicio</li>
-      <li>Usuarios</li>
-      <li>Estadisticas</li>
-      <li>Ayuda</li>
-    </ul>
-  </div>
-  
-  <div class="content">
-    <div class="main-content">
-      <h2>Bienvenido al panel de Editar productos</h2>
-      <p>Seleccione una opción del menú lateral para comenzar.</p>
-    </div>
-    <div class="content-panel">
-      <div style="margin-top: 20px;">
-        <h2 style="text-align: center;">Productos Registrados</h2>
-        <table id="productos-table">
-            <thead>
-                <tr>
-                    <th>Identificador</th>
-                    <th>Título</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Categoría</th>
-                    <th>Estado</th>
-                    <th>Imagen del producto</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        // Hacer la solicitud a la API para obtener productos
-        fetch('http://localhost:3000/obtenerProductos')
-            .then(response => response.json())
-            .then(data => {
-                const productosTable = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
-                data.forEach(producto => {
-                    const row = productosTable.insertRow();
-                    row.innerHTML = `
-                        <td>${producto.identificador}</td>
-                        <td>${producto.titulo}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
-                        <td>${producto.categoria}</td>
-                        <td>${producto.estado}</td>
-                        <td><img src="${producto.imagen}" alt="Imagen del producto"></td>
-                        <td>
-                            <a href='#' class='btn btn-primary'>Editar</a>
-                            <a href='#' class='btn btn-danger'>Eliminar</a>
-                        </td>
-                    `;
-                });
-            })
-            .catch(error => console.error('Error al obtener productos:', error));
-    </script>
-    </div>
-  </div>
-</body>
-</html>
+<div style="margin-top: 20px;">
+  <h2 style="text-align: center;">Productos Registrados</h2>
+  <table id="productos-table">
+    <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+        <th>Imagen del producto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.identificador }}</td>
+        <td>{{ producto.titulo }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.estado }}</td>
+        <td><img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px;"></td>
+        <td>
+          <button class="btn bg-black text-white hover:bg-white hover:text-black rounded" (click)="editarProducto(producto)">Editar</button>
+          <button class="btn bg-red text-white hover:bg-white hover:text-red rounded">Eliminar</button>
+        </td>
+      </tr>
+      <tr *ngIf="editMode">
+        <td colspan="7">
+          <h2>Editar Producto</h2>
+          <form (ngSubmit)="guardarCambios()">
+            <input type="text" [(ngModel)]="productoSeleccionado.titulo" name="titulo" placeholder="Título">
+            <input type="text" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" placeholder="Descripción">
+            <input type="number" [(ngModel)]="productoSeleccionado.precio" name="precio" placeholder="Precio">
+            <input type="text" [(ngModel)]="productoSeleccionado.categoria" name="categoria" placeholder="Categoría">
+            <input type="text" [(ngModel)]="productoSeleccionado.estado" name="estado" placeholder="Estado">
+            <button type="submit">Guardar Cambios</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

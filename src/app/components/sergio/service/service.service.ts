@@ -23,4 +23,13 @@ export class ServiceService {
   recuperar(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/recuperar`, data);
   }
+
+  getAllProductos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/obtenerProductos`);
+  }
+
+  actualizarProducto(id: number, producto: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/api/productos/${id}`, producto);
+  }
+
 }

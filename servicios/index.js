@@ -18,7 +18,7 @@ const dbConfig = {
   host: "localhost",
   user: "root",
   port:"3306",
-  password: "",
+  password: "111019As",
   database: "cambalaches",
 };
 
@@ -372,6 +372,40 @@ app.get('/api/productos-por-usuario', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los productos por usuario' });
   }
 });
+
+app.put('/api/productos/:id', async (req, res) => {
+  try {
+    console.log('entra')
+    const idProducto = req.params.id;
+    console.log(idProducto);
+    const { titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador } = req.body;
+
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM productos WHERE identificador = ?', [idProducto]);
+    await connection.end();
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+
+    // Actualizar el producto en la base de datos
+    const updateQuery = `UPDATE productos
+                         SET titulo = ?, descripcion = ?, precio = ?, categoria_identificador = ?, estadoProducto_identificador = ?
+                         WHERE identificador = ?`;
+    const updateValues = [titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idProducto];
+
+    const connectionUpdate = await mysql.createConnection(dbConfig);
+    await connectionUpdate.execute(updateQuery, updateValues);
+    await connectionUpdate.end();
+
+    res.status(200).json({ message: 'Producto actualizado correctamente' });
+  } catch (error) {
+    console.error('Error al actualizar el producto:', error);
+    res.status(500).json({ error: 'Error al actualizar el producto' });
+  }
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);

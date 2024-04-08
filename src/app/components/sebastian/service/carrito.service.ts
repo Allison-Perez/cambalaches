@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CarritoService {
-  productosEnCarrito: any[] = []; // Arreglo para almacenar los productos en el carrito
+  productosEnCarrito: any[] = [];
 
   constructor() { }
 
@@ -18,11 +18,11 @@ export class CarritoService {
   }
 
   obtenerProductosEnCarrito() {
-    return this.productosEnCarrito; 
+    return this.productosEnCarrito;
   }
 
   limpiarCarrito() {
-    this.productosEnCarrito = []; 
+    this.productosEnCarrito = [];
   }
 
   getTotal() {
