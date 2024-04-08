@@ -9,12 +9,12 @@
     <header class="header">
         <div class="container flex items-center justify-between">
             <div>
-                <a href="/index" class="flex cursor-pointer title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <a href="/" class="flex cursor-pointer title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                     <span class="ml-3 text-2xl font-bold">CAMBALACHES</span>
                 </a>
             </div>
             <nav class="flex-grow flex justify-center">
-                <a href="/index" class="mr-4 hover:text-gray-900 btn">Inicio</a>
+                <a href="/" class="mr-4 hover:text-gray-900 btn">Inicio</a>
                 <a href="/products" class="mr-4 hover:text-gray-900 btn">Productos</a>
                 <a href="/contactanos" class="mr-4 hover:text-gray-900 btn">Contactanos</a>
                 <a href="/about" class="mr-4 hover:text-gray-900 btn">Nosotros</a>
@@ -28,15 +28,17 @@
     </header>
     <section class="products-container">
         <div class="container">
+          <div class="container">
             <div *ngFor="let producto of productos" class="producto-card">
-                <h3>{{ producto.titulo }}</h3>
-                <img [src]="producto.urlImagen" alt="Imagen del producto">
-                <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-                <p><strong>Precio:</strong> {{ producto.precio }}</p>
-                <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
-                <p><strong>Estado:</strong> {{ producto.estado }}</p>
-                <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
+              <h3>{{ producto.titulo }}</h3>
+              <img [src]="producto.urlImagen" alt="Imagen del producto">
+              <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+              <p><strong>Precio:</strong> {{ producto.precio }}</p>
+              <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
+              <button class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2" (click)="comprarProducto(producto)">Comprar</button>
             </div>
+          </div>
+          
         </div>
     </section>
 </body>
