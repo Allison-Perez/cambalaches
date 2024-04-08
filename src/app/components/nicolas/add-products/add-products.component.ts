@@ -110,6 +110,12 @@ export class AddProductsComponent implements OnInit {
   onFileSelected(event: any) {
     console.log('Archivo seleccionado:', event.target.files[0]);
     this.imagenOpcionalFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+    };
+
+
   }
 
   resetNewProductForm() {
@@ -123,13 +129,4 @@ export class AddProductsComponent implements OnInit {
     this.imageFile = null;
   }
 
-  onFileChanged(event: any) {
-    console.log('Cambiando archivo...');
-    const imagenOpcional = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageSrc = reader.result;
-    };
-    reader.readAsDataURL(imagenOpcional);
-  }
 }
