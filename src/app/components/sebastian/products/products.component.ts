@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
-import { Router } from '@angular/router';
+import { ServiceService } from '../service/service.service';
+import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-products',
@@ -8,25 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: any[] = [];
+  productos: any[] = [];
 
-  constructor(private productService: ProductService, private router: Router) { }
+constructor(
+  private ServiceService: ServiceService,
+  private AuthService: AuthService
 
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe(
-      (data: any[]) => {
-        this.products = data;
-      },
-      (error) => {
-        console.error('Error al obtener productos:', error);
-      }
-    );
+) {}
+
+ngOnInit(): void {
+  const userEmail = this.AuthService.getUserEmail();
+  if (userEmail) {
+    this.getProductsByEmail(userEmail);
   }
+}
 
-  addToCart(product: any): void {
-    // Agrega el producto al carrito
-    this.productService.addToCart(product);
-    // Redirige al usuario al componente del carrito
-    this.router.navigate(['/cart']);
-  }
+getProductsByEmail(email: string): void {
+  this.ServiceService.getProductsByEmail(email).subscribe(
+    (data) => {
+      this.productos = data;
+    },
+    (error) => {
+      console.error('Error al obtener los productos por correo:', error);
+    }
+  );
+
+}
 }
