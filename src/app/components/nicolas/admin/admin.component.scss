@@ -5,15 +5,15 @@ body {
 }
 
 .header {
-  background-color: #333;
-  color: #fff;
+  background-color: #000000;
+  color: #ebebeb;
   padding: 20px;
   text-align: center;
 }
 
 .sidebar {
-  background-color: #555;
-  color: #fff;
+  background-color: #95c0a9;
+  color: #ffffff;
   width: 250px;
   height: 100vh;
   float: left;
@@ -25,10 +25,10 @@ body {
 }
 
 .content-panel {
-  border: 1px solid #ccc; /* Añadir borde */
-  border-radius: 5px; /* Añadir bordes redondeados */
-  padding: 20px; /* Añadir relleno */
-  background-color: #f4f4f4; /* Color de fondo */
+  border: 1px solid #86c290;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #76a777;
 }
 
 .sidebar ul {
@@ -51,7 +51,6 @@ body {
   padding: 20px;
 }
 
-/* Estilos adicionales */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -80,4 +79,31 @@ th {
 
 .btn-danger {
   background-color: #dc3545;
+}
+
+/* Estilos para los campos de filtro */
+.filtro-container {
+  text-align: center;
+  margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontal */
+  max-width: 500px; /* Ancho máximo del contenedor */
+}
+
+.filtro-inputs {
+  display: inline-block; /* Para centrar los campos de entrada */
+  text-align: center; /* Para centrar el texto dentro de los campos de entrada */
+}
+
+.filtro-inputs label,
+.filtro-inputs input {
+  display: block;
+  margin-bottom: 10px;
+  text-align: center; /* Para centrar el texto */
+}
+
+.filtro-buttons {
+  margin-top: 10px;
+}
+
+.filtro-buttons button {
+  margin-right: 10px; /* Espacio entre los botones */
 }
