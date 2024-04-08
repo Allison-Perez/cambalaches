@@ -43,22 +43,25 @@
     <section class="products-container">
         <div class="container">
             <div class="products-grid">
-
+                <!-- Iterar sobre la lista de productos y mostrar las tarjetas de productos -->
+                <div *ngFor="let producto of productos" class="producto-card">
+                    <h3>{{ producto.titulo }}</h3>
+                    <div class="clearfix">
+                        <img [src]="producto.urlImagen" class="rounded float-start" alt="Imagen del producto">
+                        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+                        <p><strong>Precio:</strong> {{ producto.precio }}</p>
+                        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+                        <p><strong>Estado:</strong> {{ producto.estado }}</p>
+                        <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    
     <div class="ad-banner">
         <img src='/assets/logo512.jpg'  alt="Publicidad">
         <p>¡Aprovecha nuestras promociones especiales!</p>
-    </div>
-    <div *ngFor="let producto of productos" class="producto-card">
-      <h3>{{ producto.titulo }}</h3>
-      <img [src]="producto.urlImagen" alt="Imagen del producto">
-      <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-      <p><strong>Precio:</strong> {{ producto.precio }}</p>
-      <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
-      <p><strong>Estado:</strong> {{ producto.estado }}</p>
-      <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
     </div>
 </body>
 </html>

@@ -54,55 +54,50 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    min-height: 10vh; /* Para ocupar toda la altura de la pantalla */
+    min-height: 100vh; /* Para ocupar toda la altura de la pantalla */
 }
 
-/* Estilos para los productos */
-.products-container {
-    padding: 50px 20px; /* Ajustar el espaciado alrededor de los productos */
-    display: flex; /* Mostrar productos en línea */
-    flex-wrap: wrap; /* Permitir que los productos se envuelvan en varias líneas */
-    gap: 20px; /* Espacio entre los productos */
+/* Estilos para las tarjetas de productos */
+.producto-card {
+    width: 200px; /* Tamaño fijo para todas las tarjetas de productos */
+    border: 1px solid #b4bd96;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #c6a2a2b0;
+    text-align: center;
+    margin-right: 20px; /* Espacio entre tarjetas de productos */
+    margin-bottom: 20px; /* Espacio entre filas de productos */
 }
+
+/* Estilos para las imágenes de los productos */
+.producto-card img {
+    width: 100%;
+    height: 150px; /* Establece la altura deseada para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el título de los productos */
+.producto-card h3 {
+    margin-top: 0; /* Ajusta el margen superior del título */
+    margin-bottom: 10px; /* Ajusta el margen inferior del título */
+}
+
+/* Estilos para la información del producto */
+.producto-card p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Estilos para el contenedor de productos */
 .products-grid {
     display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustar el tamaño de los productos */
-    gap: 20px;
-  }
-.product {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff; /* Agregar un fondo blanco a los productos */
-    flex: 1 1 calc(33.33% - 20px); /* Ajustar el ancho de los productos y dejar espacio para el espacio entre ellos */
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Alinea los productos hacia la derecha */
 }
 
-.product-content {
-    text-align: center;
-}
 
-.product-image {
-    width: 100%;
-    height: 200px; /* Altura específica para la imagen */
-    object-fit: cover; /* Ajustar la imagen sin cubrir completamente */
-    border-radius: 8px; /* Ajustar el radio de borde */
-}
-
-.product-name {
-    font-size: 1rem; /* Ajustar el tamaño del nombre del producto */
-    margin-top: 10px;
-}
-
-.product-description {
-    margin-top: 10px;
-}
-
-.product-price {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Estilos para el banner de publicidad */
 /* Estilos para el banner de publicidad */
 .ad-banner {
     max-width: 100%; /* Ajusta el ancho máximo del banner */
@@ -110,15 +105,17 @@ body {
     width: 100%; /* Ajusta el ancho del contenedor al 100% */
 }
 
+
+
 /* Estilos para la imagen dentro del banner */
 .ad-banner img {
     width: 90%; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 11cqmax;/* Ajusta la altura automáticamente según el ancho */
+    height: auto; /* Ajusta la altura automáticamente según el ancho */
     display: block; /* Asegura que la imagen se muestre como un bloque */
 }
 
 .ad-banner {
-    background-color: #f0f0f0; /* Color de fondo del banner */
+    background-color: #eaeaea; /* Color de fondo del banner */
     color: #333; /* Color del texto */
     padding: 20px; /* Espaciado interno del banner */
     position: fixed; /* Posición fija para que se mantenga en la pantalla */
@@ -132,7 +129,7 @@ body {
 .btn-add-to-cart {
     margin-top: 20px;
     background-color: #000;
-    color: #fff;
+    color: #000000;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -144,25 +141,48 @@ body {
     background-color: #333;
 }
 
-/* Estilos para los contenedores de productos */
-.producto-card {
-    border: 1px solid #ddd; /* Añade un borde alrededor del producto */
-    border-radius: 8px; /* Redondea los bordes */
-    padding: 20px; /* Añade espacio interno */
-    background-color: #fff; /* Fondo blanco */
-    margin-bottom: 20px; /* Añade margen inferior entre productos */
+/* Estilos para los productos cargados en la vista del home */
+.home-producto-card {
+    width: 200px; /* Tamaño fijo para todas las tarjetas de productos */
+    border: 1px solid #b4bd96;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
 }
 
-/* Estilos para las imágenes de productos */
-.producto-card img {
-    max-width: 10%; /* Asegura que la imagen no exceda el ancho del contenedor */
-    height: auto; /* Permite que la altura se ajuste automáticamente */
-    display: block; /* Hace que la imagen sea un bloque para alinear correctamente */
-    border-radius: 8px; /* Redondea los bordes de la imagen */
-    margin-bottom: 10px; /* Añade margen inferior para separar la imagen del texto */
+/* Estilos para las imágenes de los productos cargados en la vista del home */
+.home-producto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-/* Estilos para la información del producto */
-.producto-card p {
-    margin: 5px 0; /* Añade un pequeño margen arriba y abajo para separar los párrafos */
+/* Estilos para la información del producto cargado en la vista del home */
+.home-producto-card p {
+    margin: 5px 0;
+    font-size: 16px;
 }
+
+/* Estilos para el botón agregar al carrito cargado en la vista del home */
+.home-btn-add-to-cart {
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home-btn-add-to-cart:hover {
+    background-color: #333;
+}
+
+/* Alineación de los productos hacia la derecha */
+.products-container {
+    justify-content: flex-end;
+}
+
