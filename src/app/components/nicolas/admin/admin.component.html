@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Administración</title>
+  <link rel="stylesheet" href="admin.component.scss">
 </head>
 <body>
   <div class="header">
@@ -36,15 +37,12 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="usuarios-body">
           </tbody>
-            <tbody id="usuarios-body">
-            </tbody>
         </table>
-    </div>
+      </div>
 
-    <script>
-        // Hacer la solicitud a la API para obtener usuarios
+      <script>
         fetch('http://localhost:3000/api/usuarios')
             .then(response => response.json())
             .then(data => {
@@ -53,22 +51,18 @@
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${usuario.identificador}</td>
-                        <td>${usuario.tipo_documento}</td>
-                        <td>${usuario.documento}</td>
                         <td>${usuario.primerNombre}</td>
-                        <td>${usuario.primerApellido}</td>
                         <td>${usuario.correo}</td>
-                        <td>${usuario.idRol}</td>
                         <td>
                             <a href='#' class='btn btn-primary'>Editar</a>
                             <a href='#' class='btn btn-danger'>Eliminar</a>
-                        </td>
+                        <td>
                     `;
                     usuariosTable.appendChild(row);
                 });
             })
             .catch(error => console.error('Error al obtener usuarios:', error));
-    </script>
+      </script>
     </div>
   </div>
 </body>
