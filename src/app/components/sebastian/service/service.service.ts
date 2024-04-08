@@ -33,4 +33,15 @@ export class ServiceService {
     // Elimina el correo electrónico del usuario del almacenamiento local al cerrar sesión.
     localStorage.removeItem('user_email');
   }
+
+
+  getProductsByEmail(email: string): Observable<any> {
+    const url = `${this.apiUrl}/api/obtenerProductos/${email}`;
+    return this.http.get(url);
+  }
+
+  getAllProductos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/obtenerProductos`);
+  }
+
 }
