@@ -88,7 +88,7 @@ export class AddProductsComponent implements OnInit {
 
     if (this.imagenOpcionalFile) {
       formData.append(
-        'imagenOpcional',
+        'imageFile',
         this.imagenOpcionalFile,
         this.imagenOpcionalFile.name
       );
