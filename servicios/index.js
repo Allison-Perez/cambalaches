@@ -7,6 +7,7 @@ const cors = require('cors');
 const crypto = require('crypto');
 const path = require('path');
 const { log } = require("console");
+const { clearScreenDown } = require("readline");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -240,6 +241,58 @@ app.get('/api/usuarios', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener la lista de usuarios' });
   }
 });
+
+// TRAER MIS PRODUCTOS SEGUN USUARIO
+
+app.get('/api/obtenerProductos/:correo', async (req, res) => {
+  try {
+    console.log(req.params.correo)
+    const correo = req.params.correo.replace(/"/g, '');
+    const connection = await mysql.createConnection(dbConfig);
+    const sql = `
+    SELECT g.*, u.primerNombre, u.primerApellido, cat.nombre AS categoria, est.nombre AS estado
+    FROM productos g
+    JOIN usuarios u ON g.idUsuario = u.identificador
+    JOIN categorias cat ON g.categoria_identificador = cat.identificador
+    JOIN estadoProducto est ON g.estadoProducto_identificador = est.identificador
+    WHERE correo = ?`;
+
+
+    const [rows] = await connection.execute(sql, [correo]);
+    console.log('Correo recibido:', correo);
+
+
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener las productos por correo:', error);
+    res.status(500).json({ error: 'Error al obtener las productos por correo' });
+  }
+});
+
+// TRAER TODOS LOS PRODUCTOS
+
+app.get('/obtenertodosProductos', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const sql = `
+      SELECT g.*, u.primerNombre, u.primerApellido, cat.nombre AS categoria, est.nombre AS estado
+      FROM productos g
+      JOIN usuarios u ON g.idUsuario = u.identificador
+      JOIN categorias cat ON g.categoria_identificador = cat.identificador
+      JOIN estadoProducto est ON g.estadoProducto_identificador = est.identificador`;
+
+    const [rows] = await connection.execute(sql);
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener los productos:', error);
+    res.status(500).json({ error: 'Error al obtener los productos' });
+  }
+});
+
 
 
 app.listen(PORT, () => {
