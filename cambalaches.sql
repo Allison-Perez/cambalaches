@@ -67,5 +67,11 @@ CREATE TABLE `productos` (
 );
 
 
+ALTER TABLE productos
+ADD COLUMN imagenOpcional VARCHAR(255);
 
+ALTER TABLE productos
+ADD COLUMN urlImagen VARCHAR(255);
 
+ALTER TABLE productos
+DROP COLUMN image;
