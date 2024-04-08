@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../service/carrito.service';
-import { CorreoService } from '../service/correo.service';
+
 
 @Component({
   selector: 'app-cart',
