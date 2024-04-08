@@ -4,6 +4,7 @@
     background-color: rgba(235, 227, 227, 1.8);
     box-shadow: 0 2px 4px rgba(6, 3, 219, 0.1);
     padding: 20px 0; /* Aumentar el espacio en el encabezado */
+    margin-bottom: 20px; /* Agregar margen inferior */
     z-index: 2; /* Asegurar que el encabezado esté por encima del fondo */
 }
 
@@ -59,49 +60,103 @@ body {
 }
 
 /* Estilos para los productos */
-.products-container {
-    padding: 50px 20px; /* Ajustar el espaciado alrededor de los productos */
-    display: flex; /* Mostrar productos en línea */
-    flex-wrap: wrap; /* Permitir que los productos se envuelvan en varias líneas */
-    gap: 20px; /* Espacio entre los productos */
-}
-.products-grid {
-    display: flex;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajustar el tamaño de los productos */
-    gap: 20px;
-  }
-.product {
-    border: 1px solid #ddd;
+/* Estilos CSS */
+.producto-card {
+    border: 1px solid #d8b6b6;
     border-radius: 8px;
     padding: 20px;
-    background-color: #fff; /* Agregar un fondo blanco a los productos */
-    flex: 1 1 calc(33.33% - 20px); /* Ajustar el ancho de los productos y dejar espacio para el espacio entre ellos */
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% / 3 - 40px); /* Ajustar el ancho para que haya tres productos por fila */
+    max-width: 300px; /* Establecer un ancho máximo */
+    margin-right: 20px; /* Espacio entre las tarjetas */
+    box-sizing: border-box; /* Incluir el padding y border en el ancho */
+    float: left; /* Alinear las tarjetas en línea */
+    background-color: #f9f9f9; /* Color de fondo */
 }
-
-.product-content {
-    text-align: center;
+.producto-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
-
-.product-image {
-    width: 100%;
-    height: 200px; /* Altura específica para la imagen */
-    object-fit: cover; /* Ajustar la imagen sin cubrir completamente */
-    border-radius: 8px; /* Ajustar el radio de borde */
+.producto-card p {
+    margin-bottom: 5px;
 }
-
-.product-name {
-    font-size: 1rem; /* Ajustar el tamaño del nombre del producto */
+.producto-card button {
+    display: block;
     margin-top: 10px;
 }
-
-.product-description {
-    margin-top: 10px;
+/* Clearfix para evitar problemas de float */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Estilos CSS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.product-price {
-    font-weight: bold;
+.producto-card {
+    flex: 0 0 calc(33.33% - 20px); /* Ajustar el ancho para tres productos por fila */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.producto-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.producto-card p {
+    margin-bottom: 5px;
+}
+
+.producto-card button {
+    display: block;
     margin-top: 10px;
 }
+/* Estilos CSS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrar las tarjetas horizontalmente */
+}
+
+.producto-card {
+    flex: 0 0 calc(33.33% - 20px); /* Ajustar el ancho para tres productos por fila */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.producto-card img {
+    width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    height: 200px; /* Establecer una altura fija */
+    object-fit: cover; /* Ajustar la imagen dentro de su contenedor */
+    margin-bottom: 10px;
+}
+
+.producto-card p {
+    margin-bottom: 5px;
+}
+
+.boton-comprar {
+    text-align: center; /* Centrar el botón "Comprar" */
+}
+
 
 /* Estilos para el banner de publicidad */
 /* Estilos para el banner de publicidad */
