@@ -10,10 +10,23 @@
   <nav class="navbar">
     <button onclick="goBack()">Volver</button>
   </nav>
+  
   <div class="container">
     <div class="product-details">
       <h2>Detalles del Producto</h2>
-      <!-- Aquí van los detalles del producto -->
+      <div *ngFor="let product of productosEnCarrito" class="product-detail">
+        <img [src]="product.urlImagen" alt="Imagen del producto"> <!-- Modificado -->
+        <div>
+          <h3>{{ product.titulo }}</h3> <!-- Modificado -->
+          <p><strong>Precio:</strong> ${{ product.precio }}</p>
+          <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
+          <button (click)="handleQuantity(product, -1)">-</button>
+          <button (click)="handleQuantity(product, 1)">+</button>
+          <button (click)="removeProduct(product)">Eliminar</button>
+        </div>
+      </div>
+      <div *ngIf="productosEnCarrito.length === 0">No hay productos en el carrito</div>
+      <div class="total">Total: ${{ getTotal() }}</div>
     </div>
     <div class="payment-methods">
       <h2>Métodos de Pago</h2>
@@ -30,10 +43,11 @@
       </div>
     </div>
   </div>
+  
   <script>
     function goBack() {
       window.history.back();
     }
-  </script>
+  </script>  
 </body>
 </html>

@@ -1,53 +1,41 @@
-import { Component } from '@angular/core';
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+import { Component, OnInit } from '@angular/core';
+import { CarritoService } from '../service/carrito.service'; // Asegúrate de importar el servicio del carrito
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
-total: any;
-handleInc(arg0: any) {
-throw new Error('Method not implemented.');
-}
-handleDec(arg0: any) {
-throw new Error('Method not implemented.');
-}
-  products: Product[] = [
-    { id: 1, title: "Producto 1", price: 10.00, image: "imagen1.jpg", quantity: 1 },
-    { id: 2, title: "Producto 2", price: 20.00, image: "imagen2.jpg", quantity: 1 },
-    { id: 3, title: "Producto 3", price: 30.00, image: "imagen3.jpg", quantity: 1 }
-  ];
-carts: any;
+export class CartComponent implements OnInit {
+  productosEnCarrito: any[] = []; // Inicializa un arreglo para almacenar los productos en el carrito
+products: any;
 
-  getTotal(): number {
-    return this.products.reduce((total, product) => total + (product.price * product.quantity), 0);
+  constructor(private carritoService: CarritoService) {} // Inyecta el servicio del carrito
+
+  ngOnInit(): void {
+    this.productosEnCarrito = this.carritoService.obtenerProductosEnCarrito(); // Obtén los productos del carrito al inicializar el componente
   }
 
-  handleQuantity(product: Product, change: number): void {
-    product.quantity += change;
-    if (product.quantity < 1) {
-      this.removeProduct(product);
+  getTotal(): number {
+    return this.productosEnCarrito.reduce((total, product) => total + (product.precio * product.cantidad), 0); // Calcula el total del carrito
+  }
+
+  handleQuantity(product: any, change: number): void {
+    product.cantidad += change; // Incrementa o disminuye la cantidad del producto
+    if (product.cantidad < 1) {
+      this.removeProduct(product); // Si la cantidad es 0, elimina el producto del carrito
     }
   }
 
-  removeProduct(product: Product): void {
-    const index = this.products.indexOf(product);
+  removeProduct(product: any): void {
+    const index = this.productosEnCarrito.indexOf(product);
     if (index !== -1) {
-      this.products.splice(index, 1);
+      this.productosEnCarrito.splice(index, 1); // Elimina el producto del carrito
     }
   }
 
   checkout(): void {
-    // Lógica de procesamiento de la orden
+    // Agrega aquí la lógica para procesar la orden
     console.log("Procesando el checkout...");
   }
 }
