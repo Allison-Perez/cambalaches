@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Administración</title>
 </head>
+
 <body>
   <div class="header">
     <h1>Panel de Administración</h1>
   </div>
-  
+
   <div class="sidebar">
     <ul>
       <li>Inicio</li>
@@ -18,7 +20,7 @@
       <li>Ayuda</li>
     </ul>
   </div>
-  
+
   <div class="content">
     <div class="main-content">
       <h2>Bienvenido al panel de administración</h2>
@@ -28,6 +30,16 @@
       <div style="margin-top: 20px;">
         <h2 style="text-align: center;">Usuarios Registrados</h2>
         <table id="usuarios-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -43,20 +55,18 @@
             <tbody id="usuarios-body">
             </tbody>
         </table>
-    </div>
+      </div>
 
-    <script>
+      <script>
         // Hacer la solicitud a la API para obtener usuarios
-        fetch('http://localhost:3000/api/usuarios')
+        fetch('http://localhost:3000/usuarios')
             .then(response => response.json())
             .then(data => {
-                const usuariosTable = document.getElementById('usuarios-body');
+                const usuariosTable = document.getElementById('usuarios-table').getElementsByTagName('tbody')[0];
                 data.forEach(usuario => {
-                    const row = document.createElement('tr');
+                    const row = usuariosTable.insertRow();
                     row.innerHTML = `
                         <td>${usuario.identificador}</td>
-                        <td>${usuario.tipo_documento}</td>
-                        <td>${usuario.documento}</td>
                         <td>${usuario.primerNombre}</td>
                         <td>${usuario.primerApellido}</td>
                         <td>${usuario.correo}</td>
@@ -66,7 +76,6 @@
                             <a href='#' class='btn btn-danger'>Eliminar</a>
                         </td>
                     `;
-                    usuariosTable.appendChild(row);
                 });
             })
             .catch(error => console.error('Error al obtener usuarios:', error));
@@ -74,4 +83,5 @@
     </div>
   </div>
 </body>
+
 </html>
