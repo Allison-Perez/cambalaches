@@ -9,7 +9,6 @@ import { ServiceService } from '../service/service.service';
   styleUrls: ['./add-products.component.scss'],
 })
 export class AddProductsComponent implements OnInit {
-  imageSrc: string | ArrayBuffer | null = null;
   newsList: any[] = [];
   newProduct: any = {
     titulo: '',
@@ -23,17 +22,24 @@ export class AddProductsComponent implements OnInit {
   imagenOpcionalFile: File | null = null;
   categorias: any[] = [];
   estadosProducto: any[] = [];
+  imageSrc: string | ArrayBuffer | null = null;
 
   constructor(
     private ServiceService: ServiceService,
-    private Router: Router,
+    private router: Router,
     private AuthService: AuthService
   ) {}
 
   ngOnInit() {
-    console.log('Iniciando componente AddProductsComponent');
     this.obtenerCategorias();
     this.obtenerEstadosProducto();
+  }
+
+  transformUrl(url: string): string {
+    if (url) {
+      return 'assets/' + url.replace(/\\/g, '/');
+    }
+    return 'assets/uploads/Blog.png';
   }
 
   obtenerCategorias() {
@@ -61,16 +67,21 @@ export class AddProductsComponent implements OnInit {
       }
     );
   }
-
-  transformUrl(url: string): string {
-    if (url) {
-      return 'assets/' + url.replace(/\\/g, '/');
+  previewImage(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageSrc = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
-    return 'assets/uploads/Chica_Chaqueta_Azul.jpeg';
   }
 
+
+
   subirProducto() {
-    console.log('Subiendo producto...');
+
     const formData = new FormData();
     formData.append('titulo', this.newProduct.titulo);
     formData.append('descripcion', this.newProduct.descripcion);
@@ -83,12 +94,12 @@ export class AddProductsComponent implements OnInit {
       formData.append('correo', userEmail);
     } else {
       console.error('Correo del usuario no encontrado en el localStorage.');
-      return; // No continuar si no se encuentra el correo del usuario
+      return;
     }
 
     if (this.imagenOpcionalFile) {
       formData.append(
-        'imageFile',
+        'imagenOpcional',
         this.imagenOpcionalFile,
         this.imagenOpcionalFile.name
       );
@@ -109,6 +120,7 @@ export class AddProductsComponent implements OnInit {
   onFileSelected(event: any) {
     console.log('Archivo seleccionado:', event.target.files[0]);
     this.imagenOpcionalFile = event.target.files[0];
+    this.previewImage(event);
   }
 
   resetNewProductForm() {
@@ -122,13 +134,4 @@ export class AddProductsComponent implements OnInit {
     this.imageFile = null;
   }
 
-  onFileChanged(event: any) {
-    console.log('Cambiando archivo...');
-    const imageFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageSrc = reader.result;
-    };
-    reader.readAsDataURL(imageFile);
-  }
 }
