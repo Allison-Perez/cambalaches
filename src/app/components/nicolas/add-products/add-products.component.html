@@ -88,11 +88,7 @@
 
     <div class="preview-container">
       <div class="image-frame">
-        <img
-          *ngIf="imageSrc"
-          [src]="imageSrc"
-          alt="Vista Previa de la Imagen"
-        />
+        <img *ngIf="imageSrc" [src]="imageSrc" alt="Vista Previa de la Imagen" />
         <!-- Icono de la cámara retro dentro del contenedor -->
         <div class="camera-icon-container">
           <i class="fa fa-camera-retro" aria-hidden="true"></i>

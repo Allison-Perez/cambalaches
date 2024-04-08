@@ -67,6 +67,16 @@ export class AddProductsComponent implements OnInit {
       }
     );
   }
+  previewImage(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageSrc = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
 
 
@@ -110,12 +120,7 @@ export class AddProductsComponent implements OnInit {
   onFileSelected(event: any) {
     console.log('Archivo seleccionado:', event.target.files[0]);
     this.imagenOpcionalFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageSrc = reader.result;
-    };
-
-
+    this.previewImage(event);
   }
 
   resetNewProductForm() {
