@@ -53,6 +53,11 @@ export class ServiceService {
   getProductosPorCategoria(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/api/productos-categoria`);
   }
+  getProductosPorEstado(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/productos-estado`);
+  }
 
-
+  getProductosPorUsuario(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/productos-por-usuario`);
+  }
 }
