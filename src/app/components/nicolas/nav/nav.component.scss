@@ -1,4 +1,3 @@
-/* Estilos para el menú de navegación */
 .navbar {
     padding: 10px 20px;
 }
@@ -13,40 +12,51 @@
 .btn {
     font-size: 20px;
 }
-
 /* Colores editables para los botones */
 .perfil-btn {
     background-color: #007bff; /* Azul */
     border-color: #007bff;
     color: #fff; /* Texto blanco */
 }
-
 .estadisticas-btn {
     background-color: #000000; /* Gris */
     border-color: #6c757d;
     color: #fff; /* Texto blanco */
 }
-
 .editar-usuarios-btn {
     background-color: #d10b0b; /* Gris */
     border-color: #6c757d;
     color: #fff; /* Texto blanco */
 }
-
 .editar-productos-btn {
     background-color: #08deb7; /* Gris */
     border-color: #6c757d14;
     color: #fff; /* Texto blanco */
 }
-
 .cerrar-btn {
     background-color: #28a745; /* Verde */
     border-color: #28a745;
     color: #ffffff; /* Texto blanco */
 }
-
 .btn-primary:hover,
 .btn-secondary:hover,
 .btn-success:hover {
     opacity: 0.8; /* Reducir opacidad al pasar el mouse */
+}
+/* Estilos para el título grande */
+.big-title {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+}
+/* Estilos para el banner */
+.banner {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.banner i {
+    font-size: 48px;
+    color: #007bff;
 }
