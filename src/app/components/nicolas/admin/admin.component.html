@@ -14,7 +14,7 @@
     <ul>
       <li>Inicio</li>
       <li>Usuarios</li>
-      <li>Configuración</li>
+      <li>Estadisticas</li>
       <li>Ayuda</li>
     </ul>
   </div>
@@ -50,9 +50,9 @@
                 data.forEach(usuario => {
                     const row = usuariosTable.insertRow();
                     row.innerHTML = `
-                        <td>${usuario.id}</td>
-                        <td>${usuario.nombre}</td>
-                        <td>${usuario.email}</td>
+                        <td>${usuario.identificador}</td>
+                        <td>${usuario.primerNombre}</td>
+                        <td>${usuario.correo}</td>
                         <td>
                             <a href='#' class='btn btn-primary'>Editar</a>
                             <a href='#' class='btn btn-danger'>Eliminar</a>
