@@ -37,4 +37,8 @@ export class ServiceService {
     return this.http.post<any>(`${this.apiUrl}/productos`, productoData);
   }
 
+  getAllUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/usuarios`);
+  }
+
 }
