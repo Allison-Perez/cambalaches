@@ -14,11 +14,11 @@
     <ul>
       <li><a href="/navegar">Inicio</a></li>
       <li><a href="editarproductos">Productos</a></li>
-      <li><a href="estadisticas.html">Estadísticas</a></li>
+      <li><a href="/adminEstadisticas">Estadísticas</a></li>
       <li><a href="ayuda.html">Ayuda</a></li>
     </ul>
   </div>
-  
+
 
   <div class="content">
     <div class="main-content">
@@ -33,17 +33,17 @@
           <div class="filtro-inputs">
             <label for="filtroNombre">Filtrar por Nombre:</label>
             <input type="text" id="filtroNombre" [(ngModel)]="filtroNombre" />
-        
+
             <label for="filtroDocumento">Filtrar por Documento:</label>
             <input type="number" id="filtroDocumento" [(ngModel)]="filtroDocumento" />
           </div>
-        
+
           <div class="filtro-buttons">
             <button class="btn btn-primary" (click)="aplicarFiltros()">Aplicar Filtros</button>
             <button class="btn btn-danger" (click)="limpiarFiltros()">Limpiar Filtros</button>
           </div>
         </div>
-        
+
         <div class="table-container">
           <table>
             <thead>
