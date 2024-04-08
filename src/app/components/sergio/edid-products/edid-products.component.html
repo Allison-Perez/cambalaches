@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Panel de Administración</h1>
+  </div>
+  
+  <div class="sidebar">
+    <ul>
+      <li>Inicio</li>
+      <li>Usuarios</li>
+      <li>Estadisticas</li>
+      <li>Ayuda</li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <div class="main-content">
+      <h2>Bienvenido al panel de Editar producto</h2>
+      <p>Seleccione una opción del menú lateral para comenzar.</p>
+    </div>
+    <div class="content-panel">
+      <div style="margin-top: 20px;">
+        <h2 style="text-align: center;">Productos Registrados</h2>
+        <table id="usuarios-table">
+            <thead>
+                <tr>
+                    <th>identificador</th>
+                    <th>titulo</th>
+                    <th>descripcion</th>
+                    <th>precio</th>
+                    <th>categoria</th>
+                    <th>estado</th>
+                    <th>imagen del producto</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Hacer la solicitud a la API para obtener usuarios
+        fetch('http://localhost:3000/productos')
+            .then(response => response.json())
+            .then(data => {
+                const productosTable = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
+                data.forEach(productos => {
+                    const row = productosTable.insertRow();
+                    row.innerHTML = `
+                        <td>${productos.identificador}</td>
+                        <td>${productos.titulo}</td>
+                        <td>${productos.precio}</td>
+                        <td>${productos.categoria_identificador}</td>
+                        <td>
+                            <a href='#' class='btn btn-primary'>Editar</a>
+                            <a href='#' class='btn btn-danger'>Eliminar</a>
+                        </td>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error al obtener usuarios:', error));
+    </script>
+    </div>
+  </div>
+</body>
+</html>

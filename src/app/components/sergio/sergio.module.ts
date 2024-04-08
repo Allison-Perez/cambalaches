@@ -5,12 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { SergioRoutingModule } from './sergio-routing.module';
 import { ContactanosComponent } from './contactanos/contactanos.component';
 import { WeUsComponent } from './we-us/we-us.component';
+import { EdidProductsComponent } from './edid-products/edid-products.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     ContactanosComponent,
-    WeUsComponent
+    WeUsComponent,
+    EdidProductsComponent
   ],
   imports: [
     CommonModule,
