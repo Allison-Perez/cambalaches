@@ -9,14 +9,27 @@ export class CarritoService {
   constructor() { }
 
   agregarAlCarrito(producto: any) {
-    this.productosEnCarrito.push(producto); // Agrega un producto al carrito
+    const index = this.productosEnCarrito.findIndex(item => item.id === producto.id);
+    if (index !== -1) {
+      this.productosEnCarrito[index].quantity++;
+    } else {
+      this.productosEnCarrito.push({ ...producto, quantity: 1 });
+    }
   }
 
   obtenerProductosEnCarrito() {
-    return this.productosEnCarrito; // Obtiene todos los productos en el carrito
+    return this.productosEnCarrito; 
   }
 
   limpiarCarrito() {
-    this.productosEnCarrito = []; // Limpia el carrito, eliminando todos los productos
+    this.productosEnCarrito = []; 
+  }
+
+  getTotal() {
+    let total = 0;
+    for (const producto of this.productosEnCarrito) {
+      total += producto.precio * producto.quantity;
+    }
+    return total;
   }
 }

@@ -5,11 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProductsComponent } from './products/products.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './service/auth.guard';
+
 
 
 const routes: Routes = [
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] }, // Ruta del carrito protegida por el guardián de autenticación
+  { path: 'cart', component: CartComponent}, // Ruta del carrito protegida por el guardián de autenticación
   { path: "home", component: HomeComponent},
   { path: "logout", component: LogoutComponent},
   { path: "products", component: ProductsComponent},
