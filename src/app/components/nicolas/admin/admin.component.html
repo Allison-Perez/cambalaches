@@ -28,36 +28,43 @@
       <div style="margin-top: 20px;">
         <h2 style="text-align: center;">Usuarios Registrados</h2>
         <table id="usuarios-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+            <tbody id="usuarios-body">
             </tbody>
         </table>
     </div>
 
     <script>
         // Hacer la solicitud a la API para obtener usuarios
-        fetch('http://localhost:3000/usuarios')
+        fetch('http://localhost:3000/api/usuarios')
             .then(response => response.json())
             .then(data => {
-                const usuariosTable = document.getElementById('usuarios-table').getElementsByTagName('tbody')[0];
+                const usuariosTable = document.getElementById('usuarios-body');
                 data.forEach(usuario => {
-                    const row = usuariosTable.insertRow();
+                    const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${usuario.identificador}</td>
+                        <td>${usuario.tipo_documento}</td>
+                        <td>${usuario.documento}</td>
                         <td>${usuario.primerNombre}</td>
+                        <td>${usuario.primerApellido}</td>
                         <td>${usuario.correo}</td>
+                        <td>${usuario.idRol}</td>
                         <td>
                             <a href='#' class='btn btn-primary'>Editar</a>
                             <a href='#' class='btn btn-danger'>Eliminar</a>
                         </td>
                     `;
+                    usuariosTable.appendChild(row);
                 });
             })
             .catch(error => console.error('Error al obtener usuarios:', error));
