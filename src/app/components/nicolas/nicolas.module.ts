@@ -4,11 +4,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IndexComponent } from './index/index.component';
 import { NicolasRoutingModule } from './nicolas-routing.module';
 import { UsersComponent } from './users/users.component';
+import { AddProductsComponent } from './add-products/add-products.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    UsersComponent
+    UsersComponent,
+    AddProductsComponent
   ],
   imports: [
     CommonModule,

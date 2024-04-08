@@ -132,6 +132,30 @@ app.get('/api/obtener-usuario', async (req, res) => {
 });
 
 
+app.get('/api/categorias', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM categorias');
+    connection.end();
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener la lista de categorías:', error);
+    res.status(500).json({ error: 'Error al obtener la lista de categorías' });
+  }
+});
+
+app.get('/api/estadoProducto', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM estadoProducto');
+    connection.end();
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener la lista de estadoProducto:', error);
+    res.status(500).json({ error: 'Error al obtener la lista de estadoProducto' });
+  }
+});
+
 // SUBIR PRODUCTOS
 
 const storage = multer.diskStorage({
@@ -148,26 +172,78 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const upload = multer({ storage: storage });
 
+// app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
+//   try {
+//     const { titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador } = req.body;
+//     const correoUsuario = req.body.correo;
+//     let urlImagen = '';
+
+//     if (!correoUsuario) {
+//       return res.status(400).json({ error: "El campo 'correo' es obligatorio" });
+//     }
+
+//     const sqlUsuario = `SELECT identificador FROM usuarios WHERE correo = ?`;
+//     const connectionUsuario = await mysql.createConnection(dbConfig);
+//     const [rowsUsuario] = await connectionUsuario.execute(sqlUsuario, [correoUsuario]);
+//     await connectionUsuario.end();
+
+//     if (rowsUsuario.length === 0) {
+//       return res.status(404).json({ error: 'Usuario no encontrado' });
+//     }
+
+//     const idUsuario = rowsUsuario[0].identificador;
+
+//     if (req.file) {
+//       urlImagen = 'http://localhost:3000/' + req.file.path;
+//     } else {
+//       urlImagen = 'http://localhost:3000/uploads/Chica_Chaqueta_Azul.jpeg';
+//     }
+
+//     const connection = await mysql.createConnection(dbConfig);
+
+//     if (titulo && descripcion && idUsuario) {
+//       const sql = `INSERT INTO productos (titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, imagenOpcional)
+//                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+
+//       await connection.execute(sql, [titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, null]);
+
+//       connection.end();
+
+//       res.status(201).json({ message: "Producto publicado correctamente" });
+//     } else {
+//       res.status(400).json({ error: "Faltan campos obligatorios para crear el producto" });
+//     }
+//   } catch (error) {
+//     console.error("Error al crear el producto:", error);
+//     res.status(500).json({ error: "Error al crear el producto" });
+//   }
+// });
+
 app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
   try {
-    const { titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador } = req.body;
-    const correoUsuario = req.body.correo;
+    let { correo } = req.body
+    correo = correo.replace(/['"]+/g, '');
+
+    const { titulo, descripcion, precio, categoria, estado } = req.body;
     let urlImagen = '';
 
-    if (!correoUsuario) {
+    if (!correo) {
+      console.log("El campo 'correo' es obligatorio");
       return res.status(400).json({ error: "El campo 'correo' es obligatorio" });
     }
 
     const sqlUsuario = `SELECT identificador FROM usuarios WHERE correo = ?`;
     const connectionUsuario = await mysql.createConnection(dbConfig);
-    const [rowsUsuario] = await connectionUsuario.execute(sqlUsuario, [correoUsuario]);
+    const [rowsUsuario] = await connectionUsuario.execute(sqlUsuario, [correo]);
     await connectionUsuario.end();
 
     if (rowsUsuario.length === 0) {
+      console.log('Usuario no encontrado');
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
     const idUsuario = rowsUsuario[0].identificador;
+
 
     if (req.file) {
       urlImagen = 'http://localhost:3000/' + req.file.path;
@@ -178,15 +254,19 @@ app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
     const connection = await mysql.createConnection(dbConfig);
 
     if (titulo && descripcion && idUsuario) {
+      console.log('Insertando producto en la base de datos...');
       const sql = `INSERT INTO productos (titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, imagenOpcional)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
-      await connection.execute(sql, [titulo, descripcion, precio, categoria_identificador, estadoProducto_identificador, idUsuario, urlImagen, null]);
+      await connection.execute(sql, [titulo, descripcion, precio, categoria, estado, idUsuario, urlImagen, null]);
 
       connection.end();
 
+
+      console.log('Producto creado correctamente');
       res.status(201).json({ message: "Producto publicado correctamente" });
     } else {
+      console.log('Faltan campos obligatorios para crear el producto');
       res.status(400).json({ error: "Faltan campos obligatorios para crear el producto" });
     }
   } catch (error) {
@@ -194,7 +274,6 @@ app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
     res.status(500).json({ error: "Error al crear el producto" });
   }
 });
-
 
 
 app.listen(PORT, () => {

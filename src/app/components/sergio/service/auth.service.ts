@@ -37,4 +37,8 @@ export class AuthService {
     this._userInfo = userInfo;
   }
 
+  getUserEmailFromLocalStorage(): string {
+    return localStorage.getItem('user_email') || '';
+  }
+
 }

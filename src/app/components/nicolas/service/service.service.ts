@@ -25,4 +25,16 @@ export class ServiceService {
     return this.http.get(url);
   }
 
+  getCategorias(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/categorias`);
+  }
+
+  getEstadoProducto(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/estadoProducto`);
+  }
+
+  subirProducto(productoData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/productos`, productoData);
+  }
+
 }
