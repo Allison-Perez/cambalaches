@@ -229,7 +229,20 @@ app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
   }
 });
 
+app.get('/api/usuarios', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM usuarios');
+    connection.end();
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener la lista de usuarios:', error);
+    res.status(500).json({ error: 'Error al obtener la lista de usuarios' });
+  }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
+
