@@ -1,14 +1,14 @@
 /* Header styles */
 .header {
     position: relative;
-    background-color: rgba(235, 227, 227, 0.8);
+    background-color: rgba(235, 227, 227, 1.8);
     box-shadow: 0 2px 4px rgba(6, 3, 219, 0.1);
     padding: 20px 0; /* Aumentar el espacio en el encabezado */
     z-index: 2; /* Asegurar que el encabezado esté por encima del fondo */
 }
 
 .header .container {
-    display: flex;
+    display: flex;  
     justify-content: space-between;
     align-items: center;
 }
@@ -55,6 +55,7 @@ body {
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
     min-height: 100vh; /* Para ocupar toda la altura de la pantalla */
+    
 }
 
 /* Estilos para los productos */

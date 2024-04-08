@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="cart.component.scss">
 </head>
 <body>
   <nav class="navbar">
-    <button onclick="goBack()" class="back-button">Volver</button>
+    <button onclick="goBack()">Volver</button>
   </nav>
   <div class="container">
-    <div class="shopping-cart">
-      <div class="product" *ngFor="let cart of carts">
-        <img [src]="cart.image" [alt]="cart.title">
-        <div class="details">
-          <h3>{{ cart.title }}</h3>
-          <p>Precio: ${{ cart.price.toFixed(2) }}</p>
-          <div class="quantity-controls">
-            <button (click)="handleDec(cart.id)">-</button>
-            <input type="text" [value]="cart.quantity">
-            <button (click)="handleInc(cart.id)">+</button>
-          </div>
-          <button (click)="removeProduct(cart.id)">Remove</button>
-        </div>
+    <div class="product-details">
+      <h2>Detalles del Producto</h2>
+      <!-- Aquí van los detalles del producto -->
+    </div>
+    <div class="payment-methods">
+      <h2>Métodos de Pago</h2>
+      <form>
+        <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+        <label for="credit-card">Tarjeta de Crédito</label><br>
+        <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer">
+        <label for="bank-transfer">Transferencia Bancaria</label><br>
+        <input type="radio" id="paypal" name="payment-method" value="paypal">
+        <label for="paypal">PayPal</label><br>
+      </form>
+      <div class="checkout-button">
+        <button (click)="checkout()">Pagar</button>
       </div>
     </div>
-    <div class="order-summary">
-      <h2>Order Summary</h2>
-      <p>Total: ${{ total.toFixed(2) }}</p>
-      <button (click)="checkout()">Checkout</button>
-    </div>
-  </div>     
+  </div>
   <script>
     function goBack() {
       window.history.back();

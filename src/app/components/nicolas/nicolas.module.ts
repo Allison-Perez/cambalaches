@@ -5,12 +5,16 @@ import { IndexComponent } from './index/index.component';
 import { NicolasRoutingModule } from './nicolas-routing.module';
 import { UsersComponent } from './users/users.component';
 import { AddProductsComponent } from './add-products/add-products.component';
+import { NavComponent } from './nav/nav.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
     UsersComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    NavComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
