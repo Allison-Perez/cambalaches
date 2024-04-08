@@ -13,7 +13,14 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe(
+      (data: any[]) => {
+        this.products = data;
+      },
+      (error) => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
   }
 
   addToCart(product: any): void {
