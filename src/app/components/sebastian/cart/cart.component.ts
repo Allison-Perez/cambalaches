@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../service/carrito.service';
+import { CorreoService } from '../service/correo.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,8 +10,9 @@ import { CarritoService } from '../service/carrito.service';
 export class CartComponent implements OnInit {
   productosEnCarrito: any[] = [];
   total: number = 0;
+  correoService: any;
 
-  constructor(public carritoService: CarritoService) {}
+  constructor(public carritoService: CarritoService) { }
 
   ngOnInit(): void {
     this.productosEnCarrito = this.carritoService.obtenerProductosEnCarrito();
@@ -39,9 +41,17 @@ export class CartComponent implements OnInit {
       return total + (subtotal > 0 ? subtotal : product.precio);
     }, 0);
   }
-  
+
 
   checkout(): void {
-    console.log("Procesando el checkout...");
+    // Envía el correo electrónico de comprobante de pago
+    this.correoService.enviarComprobantePago(this.productosEnCarrito, this.total)
+      .subscribe(() => {
+        console.log("Correo electrónico enviado con éxito");
+        // Aquí puedes mostrar un mensaje al usuario de que el correo electrónico se envió correctamente
+      }, (error: any) => {
+        console.error("Error al enviar el correo electrónico:", error);
+        // Maneja el error apropiadamente
+      });
   }
 }

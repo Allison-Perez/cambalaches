@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceService } from '../service/service.service';
 import { CarritoService } from '../service/carrito.service';
-import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private serviceService: ServiceService,
     private carritoService: CarritoService,
-    private authService: AuthService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,12 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   comprarProducto(producto: any): void {
-    if (this.authService.isAuthenticated()) {
-      this.carritoService.agregarAlCarrito(producto);
-    } else {
-      // Redirigir al usuario al componente de inicio de sesión si no está autenticado
-      // Por ejemplo:
-      // this.router.navigate(['/login']);
-    }
+    this.carritoService.agregarAlCarrito(producto); // Agrega el producto al carrito
+    this.router.navigate(['/cart']); // Redirige al usuario al carrito
   }
 }

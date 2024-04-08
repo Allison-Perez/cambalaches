@@ -11,20 +11,18 @@ export class CarritoService {
   agregarAlCarrito(producto: any) {
     const index = this.productosEnCarrito.findIndex(item => item.id === producto.id);
     if (index !== -1) {
-      // Si el producto ya está en el carrito, incrementa la cantidad
       this.productosEnCarrito[index].quantity++;
     } else {
-      // Si el producto no está en el carrito, agrégalo con cantidad 1
       this.productosEnCarrito.push({ ...producto, quantity: 1 });
     }
   }
 
   obtenerProductosEnCarrito() {
-    return this.productosEnCarrito; // Obtiene todos los productos en el carrito
+    return this.productosEnCarrito; 
   }
 
   limpiarCarrito() {
-    this.productosEnCarrito = []; // Limpia el carrito, eliminando todos los productos
+    this.productosEnCarrito = []; 
   }
 
   getTotal() {
