@@ -5,21 +5,32 @@ body {
   }
   
   /* Icono de la cámara retro */
-  .fa-camera-retro {
-    color: #0de8d9; /* Color del icono de la cámara */
-    font-size: 10em; /* Tamaño del icono */
-    opacity: 0.5; /* Opacidad para que sea menos prominente */
-  }
-  
-  /* Contenedor del icono de la cámara */
-  .camera-icon-container {
-    position: relative; /* Cambiado a relativo */
-    display: flex; /* Alineación de centro */
-    justify-content: center; /* Alineación de centro */
-    align-items: center; /* Alineación de centro */
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-  }
+.fa-camera-retro {
+  color: #0de8d9; /* Color del icono de la cámara */
+  font-size: 10em; /* Tamaño del icono reducido */
+  opacity: 0.5; /* Opacidad para que sea menos prominente */
+}
+
+/* Contenedor del icono de la cámara */
+.camera-icon-container {
+  position: relative; /* Cambiado a relativo */
+  width: 100%; /* Ancho completo del contenedor */
+  height: 100%; /* Altura completa del contenedor */
+  display: flex; /* Alineación de centro */
+  justify-content: center; /* Alineación de centro */
+  align-items: center; /* Alineación de centro */
+}
+
+/* Restricción de tamaño para el contenedor de la imagen */
+.image-frame {
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 400px; /* Ancho máximo */
+  height: auto; /* Altura automática */
+  border: 2px solid #07ecec; /* Color del marco */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
   
   .container {
     max-width: 800px;
@@ -100,6 +111,10 @@ body {
     margin-bottom: 15px;
   }
   
+  .clear-button {
+    margin-left: 10px; /* Ajusta este valor según sea necesario */
+  }  
+
   #preview {
     margin-top: 10px;
     max-width: 100%;

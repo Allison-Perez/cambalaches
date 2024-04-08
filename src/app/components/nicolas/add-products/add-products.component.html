@@ -1,6 +1,17 @@
-<div class="container">
-  <h1>Subir Producto</h1>
-  <div class="form-container">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Cambalaches</title>
+    <!-- Enlace a Font Awesome usando una CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1><i class="fa fa-upload" aria-hidden="true"></i> Subir Producto</h1>
+    <div class="form-container">
     <form id="productForm" (ngSubmit)="subirProducto()">
       <label for="productName">Nombre del Producto:</label>
       <input
@@ -70,7 +81,10 @@
         required
       />
 
-      <button type="submit">Subir Producto</button>
+      <div class="button-container">
+        <button type="submit">Subir Producto</button>
+        <button type="reset" class="clear-button">Limpiar</button>
+      </div>
     </form>
 
     <div class="preview-container">
@@ -80,7 +94,14 @@
           [src]="imageSrc"
           alt="Vista Previa de la Imagen"
         />
+        <!-- Icono de la cámara retro dentro del contenedor -->
+        <div class="camera-icon-container">
+          <i class="fa fa-camera-retro" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+</body>
+</html>
