@@ -18,7 +18,7 @@ const dbConfig = {
   host: "localhost",
   user: "root",
   port:"3306",
-  password: "",
+  password: "111019As",
   database: "cambalaches",
 };
 
@@ -246,7 +246,6 @@ app.get('/api/usuarios', async (req, res) => {
 
 app.get('/api/obtenerProductos/:correo', async (req, res) => {
   try {
-    console.log(req.params.correo)
     const correo = req.params.correo.replace(/"/g, '');
     const connection = await mysql.createConnection(dbConfig);
     const sql = `
@@ -293,6 +292,64 @@ app.get('/obtenerProductos', async (req, res) => {
   }
 });
 
+// app.get('/api/productos-categoria', async (req, res) => {
+//   try {
+//     const connection = await mysql.createConnection(dbConfig);
+
+//     const sqlQuery = `
+//       SELECT
+//           c.nombre AS categoria,
+//           COUNT(*) AS cantidad_productos
+//       FROM
+//           productos p
+//       JOIN
+//           categorias c ON p.categoria_identificador = c.identificador
+//       GROUP BY
+//           c.nombre
+//       ORDER BY
+//           cantidad_productos DESC;
+//     `;
+
+//     const [rows] = await connection.execute(sqlQuery);
+
+//     connection.end();
+
+//     res.status(200).json(rows);
+//   } catch (error) {
+//     console.error('Error al obtener los productos por categoría:', error);
+//     res.status(500).json({ error: 'Error al obtener los productos por categoría' });
+//   }
+// });
+
+app.get('/api/productos-categoria', async (req, res) => {
+  try {
+    console.log('Received request at /api/productos-categoria');
+    const connection = await mysql.createConnection(dbConfig);
+
+    const sqlQuery = `
+      SELECT
+          c.nombre AS categoria,
+          COUNT(*) AS cantidad_productos
+      FROM
+          productos p
+      JOIN
+          categorias c ON p.categoria_identificador = c.identificador
+      GROUP BY
+          c.nombre
+      ORDER BY
+          cantidad_productos DESC;
+    `;
+
+    const [rows] = await connection.execute(sqlQuery);
+
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener los productos por categoría:', error);
+    res.status(500).json({ error: 'Error al obtener los productos por categoría' });
+  }
+});
 
 
 app.listen(PORT, () => {
