@@ -273,7 +273,7 @@ app.get('/api/obtenerProductos/:correo', async (req, res) => {
 
 // TRAER TODOS LOS PRODUCTOS
 
-app.get('/obtenertodosProductos', async (req, res) => {
+app.get('/obtenerProductos', async (req, res) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
     const sql = `

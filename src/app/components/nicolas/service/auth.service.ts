@@ -41,4 +41,8 @@ export class AuthService {
     return localStorage.getItem('user_email') || '';
   }
 
+  getUserEmail() {
+    return localStorage.getItem('user_email') || '';
+  }
+
 }
