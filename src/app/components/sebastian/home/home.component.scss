@@ -54,7 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    min-height: 100vh; /* Para ocupar toda la altura de la pantalla */
+    min-height: 10vh; /* Para ocupar toda la altura de la pantalla */
 }
 
 /* Estilos para los productos */
@@ -112,8 +112,8 @@ body {
 
 /* Estilos para la imagen dentro del banner */
 .ad-banner img {
-    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 10cqmax;/* Ajusta la altura automáticamente según el ancho */
+    width: 90%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 11cqmax;/* Ajusta la altura automáticamente según el ancho */
     display: block; /* Asegura que la imagen se muestre como un bloque */
 }
 
@@ -142,4 +142,27 @@ body {
 
 .btn-add-to-cart:hover {
     background-color: #333;
+}
+
+/* Estilos para los contenedores de productos */
+.producto-card {
+    border: 1px solid #ddd; /* Añade un borde alrededor del producto */
+    border-radius: 8px; /* Redondea los bordes */
+    padding: 20px; /* Añade espacio interno */
+    background-color: #fff; /* Fondo blanco */
+    margin-bottom: 20px; /* Añade margen inferior entre productos */
+}
+
+/* Estilos para las imágenes de productos */
+.producto-card img {
+    max-width: 10%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    display: block; /* Hace que la imagen sea un bloque para alinear correctamente */
+    border-radius: 8px; /* Redondea los bordes de la imagen */
+    margin-bottom: 10px; /* Añade margen inferior para separar la imagen del texto */
+}
+
+/* Estilos para la información del producto */
+.producto-card p {
+    margin: 5px 0; /* Añade un pequeño margen arriba y abajo para separar los párrafos */
 }
