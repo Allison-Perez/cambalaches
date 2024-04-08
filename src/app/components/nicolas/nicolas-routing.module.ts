@@ -8,7 +8,7 @@ import { NavComponent } from './nav/nav.component';
 const routes: Routes = [
   { path: '', component: IndexComponent},
   { path: 'perfil', component: UsersComponent},
-  { path: 'agregar productos', component: AddProductsComponent},
+  { path: 'agregarproductos', component: AddProductsComponent},
   { path: 'navegar', component: NavComponent}
 ];
 
