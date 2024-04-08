@@ -3,14 +3,14 @@ body {
     margin: 0;
     padding: 0;
   }
-  
+
   .header {
     background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
   }
-  
+
   .sidebar {
     background-color: #555;
     color: #fff;
@@ -18,27 +18,27 @@ body {
     height: 100vh;
     float: left;
   }
-  
+
   .content {
     padding: 20px;
     margin-left: 250px;
   }
-  
+
   .sidebar ul {
     list-style-type: none;
     padding: 0;
   }
-  
+
   .sidebar ul li {
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   .sidebar ul li:hover {
     background-color: #444;
   }
-  
+
   .main-content {
     background-color: #f4f4f4;
     padding: 20px;
@@ -72,4 +72,25 @@ th {
 
 .btn-danger {
   background-color: #dc3545;
+}
+/* edid-products.component.scss */
+
+.btn-eliminar {
+  background-color: #FF4136; /* Color de fondo rojo */
+  color: white; /* Color del texto blanco */
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero */
+  transition: background-color 0.3s; /* Transición suave del color de fondo */
+
+  /* Estilos al pasar el ratón por encima */
+  &:hover {
+    background-color: #D30F0A; /* Color de fondo más oscuro al pasar el ratón */
+  }
+
+  /* Estilos al hacer clic */
+  &:active {
+    background-color: #B70C09; /* Color de fondo aún más oscuro al hacer clic */
+  }
 }

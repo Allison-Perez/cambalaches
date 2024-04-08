@@ -24,7 +24,7 @@
         <td><img [src]="producto.urlImagen" alt="Imagen del producto" style="max-width: 100px;"></td>
         <td>
           <button class="btn bg-black text-white hover:bg-white hover:text-black rounded" (click)="editarProducto(producto)">Editar</button>
-          <button class="btn bg-red text-white hover:bg-white hover:text-red rounded">Eliminar</button>
+          <button class="btn-eliminar" (click)="eliminarProducto(producto)">Eliminar</button>
         </td>
       </tr>
       <tr *ngIf="editMode">
@@ -34,12 +34,17 @@
             <input type="text" [(ngModel)]="productoSeleccionado.titulo" name="titulo" placeholder="Título">
             <input type="text" [(ngModel)]="productoSeleccionado.descripcion" name="descripcion" placeholder="Descripción">
             <input type="number" [(ngModel)]="productoSeleccionado.precio" name="precio" placeholder="Precio">
-            <input type="text" [(ngModel)]="productoSeleccionado.categoria" name="categoria" placeholder="Categoría">
-            <input type="text" [(ngModel)]="productoSeleccionado.estado" name="estado" placeholder="Estado">
+            <select [(ngModel)]="productoSeleccionado.categoria_identificador" name="categoria_identificador">
+              <option *ngFor="let categoria of categorias" [value]="categoria.identificador">{{ categoria.nombre }}</option>
+            </select>
+            <select [(ngModel)]="productoSeleccionado.estadoProducto_identificador" name="estadoProducto_identificador">
+              <option *ngFor="let estado of estadosProducto" [value]="estado.identificador">{{ estado.nombre }}</option>
+            </select>
             <button type="submit">Guardar Cambios</button>
           </form>
         </td>
       </tr>
+
     </tbody>
   </table>
 </div>

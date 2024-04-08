@@ -405,6 +405,32 @@ app.put('/api/productos/:id', async (req, res) => {
   }
 });
 
+app.delete('/api/productos/:identificador', async (req, res) => {
+  try {
+    const identificadorProducto = req.params.identificador;
+
+    // Verificar si el producto existe
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM productos WHERE identificador = ?', [identificadorProducto]);
+    await connection.end();
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
+
+    // Eliminar el producto de la base de datos
+    const deleteQuery = 'DELETE FROM productos WHERE identificador = ?';
+    const connectionDelete = await mysql.createConnection(dbConfig);
+    await connectionDelete.execute(deleteQuery, [identificadorProducto]);
+    await connectionDelete.end();
+
+    res.status(200).json({ message: 'Producto eliminado correctamente' });
+  } catch (error) {
+    console.error('Error al eliminar el producto:', error);
+    res.status(500).json({ error: 'Error al eliminar el producto' });
+  }
+});
+
 
 
 app.listen(PORT, () => {
