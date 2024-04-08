@@ -27,16 +27,16 @@
     <div class="content-panel">
       <div style="margin-top: 20px;">
         <h2 style="text-align: center;">Productos Registrados</h2>
-        <table id="usuarios-table">
+        <table id="productos-table">
             <thead>
                 <tr>
-                    <th>identificador</th>
-                    <th>titulo</th>
-                    <th>descripcion</th>
-                    <th>precio</th>
-                    <th>categoria</th>
-                    <th>estado</th>
-                    <th>imagen del producto</th>
+                    <th>Identificador</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
+                    <th>Estado</th>
+                    <th>Imagen del producto</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,18 +45,21 @@
     </div>
 
     <script>
-        // Hacer la solicitud a la API para obtener usuarios
-        fetch('http://localhost:3000/productos')
+        // Hacer la solicitud a la API para obtener productos
+        fetch('http://localhost:3000/obtenerProductos')
             .then(response => response.json())
             .then(data => {
                 const productosTable = document.getElementById('productos-table').getElementsByTagName('tbody')[0];
-                data.forEach(productos => {
+                data.forEach(producto => {
                     const row = productosTable.insertRow();
                     row.innerHTML = `
-                        <td>${productos.identificador}</td>
-                        <td>${productos.titulo}</td>
-                        <td>${productos.precio}</td>
-                        <td>${productos.categoria_identificador}</td>
+                        <td>${producto.identificador}</td>
+                        <td>${producto.titulo}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.precio}</td>
+                        <td>${producto.categoria}</td>
+                        <td>${producto.estado}</td>
+                        <td><img src="${producto.imagen}" alt="Imagen del producto"></td>
                         <td>
                             <a href='#' class='btn btn-primary'>Editar</a>
                             <a href='#' class='btn btn-danger'>Eliminar</a>
@@ -64,7 +67,7 @@
                     `;
                 });
             })
-            .catch(error => console.error('Error al obtener usuarios:', error));
+            .catch(error => console.error('Error al obtener productos:', error));
     </script>
     </div>
   </div>

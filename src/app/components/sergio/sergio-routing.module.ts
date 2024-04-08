@@ -6,10 +6,10 @@ import { WeUsComponent } from './we-us/we-us.component';
 import { EdidProductsComponent } from './edid-products/edid-products.component';
 
 const routes: Routes = [
-{path: "editarproductos", component: EdidProductsComponent },
-{path: "nosotros", component: WeUsComponent},
-{ path: "contactanos", component: ContactanosComponent },
-{ path: "login", component: LoginComponent },
+  { path: "editarproductos", component: EdidProductsComponent },
+  { path: "nosotros", component: WeUsComponent },
+  { path: "contactanos", component: ContactanosComponent },
+  { path: "login", component: LoginComponent },
 ];
 
 @NgModule({
