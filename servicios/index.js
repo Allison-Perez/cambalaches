@@ -173,7 +173,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const upload = multer({ storage: storage });
 
 
-app.post("/productos", upload.single('imageFile'), async (req, res) => {
+app.post("/productos", upload.single('imagenOpcional'), async (req, res) => {
   try {
     let { correo } = req.body
     correo = correo.replace(/['"]+/g, '');
@@ -202,7 +202,7 @@ app.post("/productos", upload.single('imageFile'), async (req, res) => {
     if (req.file) {
       urlImagen = 'http://localhost:3000/' + req.file.path;
     } else {
-      urlImagen = 'http://localhost:3000/uploads/imageFile';
+      urlImagen = 'http://localhost:3000/uploads/Chica_Chaqueta_Azul.jpeg';
     }
 
     const connection = await mysql.createConnection(dbConfig);

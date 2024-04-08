@@ -60,13 +60,12 @@
         </option>
       </select>
 
-      <label for="productImage">Imagen del Producto:</label>
+      <label for="imagenOpcional">Imagen del Producto:</label>
       <input
         type="file"
-        id="productImage"
-        name="productImage"
-        accept="imageFile/*"
-        (change)="onFileChanged($event)"
+        id="imagenOpcional"
+        name="imagenOpcional"
+        (change)="onFileSelected($event)"
         required
       />
 
