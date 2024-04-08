@@ -53,6 +53,7 @@
                         <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
                         <p><strong>Estado:</strong> {{ producto.estado }}</p>
                         <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
+                        <button class="btn bg-black text-white hover:bg-white hover:text-black rounded py-2 px-4 mr-2" (click)="comprarProducto(producto)">Comprar</button>
                     </div>
                 </div>
             </div>

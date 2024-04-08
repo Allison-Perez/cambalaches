@@ -26,7 +26,7 @@
         </div>
       </div>
       <div *ngIf="productosEnCarrito.length === 0">No hay productos en el carrito</div>
-      <div class="total">Total: ${{ getTotal() }}</div>
+      <div class="total">Total: ${{ calcularTotal() }}</div>
     </div>
     <div class="payment-methods">
       <h2>Métodos de Pago</h2>

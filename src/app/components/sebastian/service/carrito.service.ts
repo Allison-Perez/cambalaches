@@ -9,7 +9,14 @@ export class CarritoService {
   constructor() { }
 
   agregarAlCarrito(producto: any) {
-    this.productosEnCarrito.push(producto); // Agrega un producto al carrito
+    const index = this.productosEnCarrito.findIndex(item => item.id === producto.id);
+    if (index !== -1) {
+      // Si el producto ya está en el carrito, incrementa la cantidad
+      this.productosEnCarrito[index].quantity++;
+    } else {
+      // Si el producto no está en el carrito, agrégalo con cantidad 1
+      this.productosEnCarrito.push({ ...producto, quantity: 1 });
+    }
   }
 
   obtenerProductosEnCarrito() {
@@ -18,5 +25,13 @@ export class CarritoService {
 
   limpiarCarrito() {
     this.productosEnCarrito = []; // Limpia el carrito, eliminando todos los productos
+  }
+
+  getTotal() {
+    let total = 0;
+    for (const producto of this.productosEnCarrito) {
+      total += producto.precio * producto.quantity;
+    }
+    return total;
   }
 }
