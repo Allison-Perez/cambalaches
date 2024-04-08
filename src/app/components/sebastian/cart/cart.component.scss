@@ -2,7 +2,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #e46e24e1;
+  background-color: hwb(23 14% 11% / 0.882);
   margin: 0;
   padding: 0;
 }
@@ -74,20 +74,23 @@ body {
   margin-top: 20px;
 }
 
-/* styles.css */
-
-.btn-volver {
-  background-color: #0cc91c;
-  border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  color: #fff;
-  border-radius: 5px;
-  text-decoration: none; /* Para quitar la subrayado de los enlaces */
+.navbar {
+  background-color: #e46e24e1; /* Color de fondo de la barra de navegación */
+  padding: 10px; /* Espaciado interno */
 }
 
-.btn-volver:hover {
-  background-color: #0aa218; /* Cambia el color de fondo al pasar el cursor */
+.btn-back {
+  background-color: #007bff; /* Color de fondo del botón */
+  border: none; /* Quita el borde */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor al pasar */
+}
+
+.btn-back:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el cursor */
 }
 
 
