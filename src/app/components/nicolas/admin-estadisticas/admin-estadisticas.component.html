@@ -1,4 +1,18 @@
+<!-- Contenido de las gráficas -->
 <p>Admin Estadísticas Works!</p>
-<div class="chart-container" #chart></div>
-<div class="chart-container" #estadoChart></div>
-<div class="chart-container" #usuarioChart></div>
+<div class="charts-container">
+    <div class="chart-container" #chart>
+        <p>Categorías más populares</p>
+    </div>
+    <div class="chart-container" #estadoChart>
+        <p>Disponibilidad</p>
+    </div>
+    <div class="chart-container" #usuarioChart>
+        <p>Disponibles</p>
+    </div>
+</div>
+
+<!-- Botón para regresar -->
+<div class="back-button">
+    <button onclick="window.history.back()">Regresar</button>
+</div>
