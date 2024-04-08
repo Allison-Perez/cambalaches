@@ -17,7 +17,7 @@
             <div class="avatar-perfil">
                 <img src="/assets/Chica_Chaqueta_Cuero.jpeg" alt="img">
                 <a href="#" class="cambiar-foto">
-                    <i class="fas fa-camera"></i> 
+                    <i class="fas fa-camera"></i>
                     <span>Cambiar foto</span>
                 </a>
             </div>
@@ -42,6 +42,19 @@
         </div>
     </div>
 </section>
+
+<div class="productos">
+  <div *ngFor="let producto of productos" class="producto-card">
+    <h3>{{ producto.titulo }}</h3>
+    <img [src]="producto.urlImagen" alt="Imagen del producto">
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Precio:</strong> {{ producto.precio }}</p>
+    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    <p><strong>Estado:</strong> {{ producto.estado }}</p>
+    <p><strong>Publicado por:</strong> {{ producto.primerNombre }} {{ producto.primerApellido }}</p>
+  </div>
+</div>
+
 
 <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
     <p style="font-size: .75rem;">Apock graficos</p>

@@ -61,7 +61,7 @@ export class LoginComponent {
   private redirectToRoleView(userRole: number): void {
     switch (userRole) {
       case 1:
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/useradmin']);
         break;
       case 2:
         this.router.navigate(['/home']);
