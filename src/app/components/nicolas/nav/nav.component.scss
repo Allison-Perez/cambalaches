@@ -43,23 +43,8 @@
 .btn-success:hover {
     opacity: 0.8; /* Reducir opacidad al pasar el mouse */
 }
-/* Estilos para el título grande */
-.big-title {
-    text-align: center;
-    font-size: 36px;
-    margin-top: 20px;
-}
-/* Estilos para el banner */
-.banner {
-    text-align: center;
-    background-color: #f0f0f0;
-    padding: 10px 0;
-    margin-top: 20px;
-}
-.banner i {
-    font-size: 48px;
-    color: #007bff;
-}
+
+
 /* Estilos adicionales */
 table {
     border-collapse: collapse;
@@ -89,4 +74,47 @@ th {
 
 .btn-danger {
     background-color: #dc3545;
+}
+/* Estilos específicos para imágenes individuales */
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 100px;
+
+    &:first-child {
+        margin-bottom: 100px; /* Ajusta el margen inferior para la primera imagen */
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 200%;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin: 1;
+    }
+
+    &.sergio {
+        position: absolute;
+        left: 1%;
+        transform: translateX(50%) translateY(50%);
+    }
+
+    &.sebastian {
+        position: absolute;
+        left: 1%;
+        transform: translateX(5%) translateY(5%);
+        margin-left: 1px; /* Ajusta la distancia horizontal entre las imágenes */
+    }
+}
+
+
+
+
+body {
+    background-color: #c0bcbc; /* Color gris claro */
 }
