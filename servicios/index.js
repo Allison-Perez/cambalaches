@@ -246,7 +246,6 @@ app.get('/api/usuarios', async (req, res) => {
 
 app.get('/api/obtenerProductos/:correo', async (req, res) => {
   try {
-    console.log(req.params.correo)
     const correo = req.params.correo.replace(/"/g, '');
     const connection = await mysql.createConnection(dbConfig);
     const sql = `
@@ -273,7 +272,7 @@ app.get('/api/obtenerProductos/:correo', async (req, res) => {
 
 // TRAER TODOS LOS PRODUCTOS
 
-app.get('/obtenertodosProductos', async (req, res) => {
+app.get('/obtenerProductos', async (req, res) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
     const sql = `
@@ -293,7 +292,86 @@ app.get('/obtenertodosProductos', async (req, res) => {
   }
 });
 
+app.get('/api/productos-categoria', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
 
+    const sqlQuery = `
+      SELECT
+          c.nombre AS categoria,
+          COUNT(*) AS cantidad_productos
+      FROM
+          productos p
+      JOIN
+          categorias c ON p.categoria_identificador = c.identificador
+      GROUP BY
+          c.nombre
+      ORDER BY
+          cantidad_productos DESC;
+    `;
+
+    const [rows] = await connection.execute(sqlQuery);
+
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener los productos por categoría:', error);
+    res.status(500).json({ error: 'Error al obtener los productos por categoría' });
+  }
+});
+
+
+app.get('/api/productos-estado', async (req, res) => {
+  try {
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    const sqlQuery = `
+      SELECT
+          ep.nombre AS estado,
+          COUNT(*) AS cantidad_productos
+      FROM
+          productos p
+      JOIN
+          estadoProducto ep ON p.estadoProducto_identificador = ep.identificador
+      GROUP BY
+          ep.nombre;
+    `;
+
+    const [rows] = await connection.execute(sqlQuery);
+
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener los productos por estado:', error);
+    res.status(500).json({ error: 'Error al obtener los productos por estado' });
+  }
+});
+
+app.get('/api/productos-por-usuario', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+
+    const sqlQuery = `
+      SELECT u.primerNombre, COUNT(*) AS cantidad_productos
+      FROM usuarios u
+      JOIN productos p ON u.identificador = p.idUsuario
+      GROUP BY u.primerNombre
+      ORDER BY cantidad_productos DESC;
+    `;
+
+    const [rows] = await connection.execute(sqlQuery);
+
+    connection.end();
+
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Error al obtener los productos por usuario:', error);
+    res.status(500).json({ error: 'Error al obtener los productos por usuario' });
+  }
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);

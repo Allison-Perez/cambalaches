@@ -7,6 +7,8 @@ import { UsersComponent } from './users/users.component';
 import { AddProductsComponent } from './add-products/add-products.component';
 import { NavComponent } from './nav/nav.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminEstadisticasComponent } from './admin-estadisticas/admin-estadisticas.component';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AdminComponent } from './admin/admin.component';
     UsersComponent,
     AddProductsComponent,
     NavComponent,
-    AdminComponent
+    AdminComponent,
+    AdminEstadisticasComponent,
+
   ],
   imports: [
     CommonModule,
